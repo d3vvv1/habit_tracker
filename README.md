@@ -1,4 +1,4 @@
-# daily_victory_project
+# Habit Tracker
 
 A new Flutter project.
 
