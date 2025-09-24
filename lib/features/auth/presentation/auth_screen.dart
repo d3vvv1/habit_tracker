@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/core/theme/app_colors.dart';
-import 'package:habit_tracker/core/theme/app_text_styles.dart';
+import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/views/custom_app_bar.dart';
+import 'package:habit_tracker/main.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -9,7 +9,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.base3,
+      backgroundColor: context.appColors.base3,
       appBar: const CustomAppBar(
           backButton: SizedBox.shrink(),
           title: SizedBox.shrink(),
@@ -23,18 +23,18 @@ class AuthScreen extends StatelessWidget {
             Icon(
               Icons.account_box_rounded,
               size: 64,
-              color: AppColors.base1,
+              color: context.appColors.base1,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              'Давайте начнем!',
-              style: AppTextStyles.header1,
+              AppWords.of(context).letsGetStarted,
+              style: context.appText.header1,
             ),
             Text(
-              'Необходимо войти в ваш аккаунт',
-              style: AppTextStyles.header3,
+              AppWords.of(context).letsDiveInIntoYourAccount,
+              style: context.appText.header3,
             ),
             //Expanded(child: SizedBox()),
             SizedBox(
@@ -42,15 +42,18 @@ class AuthScreen extends StatelessWidget {
               height: 60,
               child: TextButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(AppColors.base1),
+                  backgroundColor:
+                      WidgetStatePropertyAll(context.appColors.base1),
                   shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20))),
                 ),
                 onPressed: () {},
-                child: Text('Войти',
-                    style: AppTextStyles.header2.copyWith(
-                      color: AppColors.base3,
-                    )),
+                child: Text(
+                  AppWords.of(context).signIn,
+                  style: context.appText.header2.copyWith(
+                    color: context.appColors.base3,
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -61,15 +64,18 @@ class AuthScreen extends StatelessWidget {
               height: 60,
               child: TextButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(AppColors.base6),
+                  backgroundColor:
+                      WidgetStatePropertyAll(context.appColors.base6),
                   shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20))),
                 ),
                 onPressed: () {},
-                child: Text('Зарегестрироваться',
-                    style: AppTextStyles.header2.copyWith(
-                      color: AppColors.base1,
-                    )),
+                child: Text(
+                  AppWords.of(context).signUp,
+                  style: context.appText.header2.copyWith(
+                    color: context.appColors.base1,
+                  ),
+                ),
               ),
             ),
           ],

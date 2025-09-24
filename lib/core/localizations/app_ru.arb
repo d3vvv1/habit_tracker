@@ -1,0 +1,52 @@
+{
+    "letsGetStarted": "Давайте начнем!",
+    "letsDiveInIntoYourAccount": "Давайте войдем в ваш аккаунт",
+    "continueWithGoogle": "Продолжить с Google",
+    "continueWithApple": "Продолжить с Apple",
+    "continueWithFacebook": "Продолжить с Facebook",
+    "continueWithTwitter": "Продолжить с Twitter",
+    "signUp": "Зарегистрироваться",
+    "signIn": "Войти",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия использования",
+    "createNewHabit": "Создать новую привычку",
+    "regularHabit": "Обычная привычка",
+    "oneTimeTask": "Одноразовая задача",
+    "habitName": "Название привычки",
+    "studyArt": "Изучать искусство",
+    "icon": "Иконка",
+    "color": "Цвет",
+    "repeat": "Повторять",
+    "daily": "Ежедневно",
+    "weekly": "Еженедельно",
+    "monthly": "Ежемесячно",
+    "everyMonthOn": "Каждый месяц в",
+    "doItAt": "Выполнять в:",
+    "morning": "Утро",
+    "afternoon": "День",
+    "evening": "Вечер",
+    "endHabitOn": "Завершить привычку",
+    "save": "Сохранить",
+    "report": "Отчет",
+    "nDays": "{days} дней",
+    "@nDays": {
+        "description": "wordForm",
+        "placeholders": {
+            "days": {
+                "type": "int",
+                "example": "10"
+            }
+        }
+    },
+    "streak": "Серия",
+    "completionRate": "Процент выполнения",
+    "totalHabitsCompleted": "Всего выполнено привычек",
+    "totalHabitsCompletedThisWeek": "Всего выполнено привычек на этой неделе",
+    "habitsCompleted": "Выполненные привычки",
+    "thisWeek": "На этой неделе",
+    "habitCompletionRate": "Процент выполнения привычек",
+    "last6Months": "Последние 6 месяцев",
+    "calendarStats": "Статистика календаря",
+    "thisMonth": "Этот месяц",
+    "moodChart": "График настроения"
+}
