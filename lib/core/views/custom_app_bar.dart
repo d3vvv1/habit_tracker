@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/main.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? backButton;
@@ -17,14 +19,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          //top: mediaQuery.viewPadding.top,
+          top: Adaptive.viewPaddingTop,
           left: horizontalPadding,
           right: horizontalPadding),
       child: SizedBox(
         width: preferredSize.width,
         height: preferredSize.height,
         child: ColoredBox(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: context.appColors.base2,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -56,5 +58,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 50);
+  Size get preferredSize => Size(double.infinity, Adaptive.getHeight(60));
 }

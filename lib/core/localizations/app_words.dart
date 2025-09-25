@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:habit_tracker/core/localizations/app_localizations.dart';
 
 class AppWords {
-  static const locale = Locale('ru');
+  static const locale = Locale('en');
 
   static const supportedLocales = [Locale('en'), Locale('ru')];
 

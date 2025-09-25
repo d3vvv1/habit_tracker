@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
+import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/custom_app_bar.dart';
+import 'package:habit_tracker/features/auth/presentation/sign_in_button.dart';
+import 'package:habit_tracker/features/auth/presentation/sign_up_button.dart';
 import 'package:habit_tracker/main.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -16,17 +19,19 @@ class AuthScreen extends StatelessWidget {
           horizontalPadding: 20,
           actions: []),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(
+            horizontal: Adaptive.getWidth(25),
+            vertical: Adaptive.getHeight(15)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.account_box_rounded,
-              size: 64,
+              size: Adaptive.getHeight(80),
               color: context.appColors.base1,
             ),
             SizedBox(
-              height: 20,
+              height: Adaptive.getHeight(30),
             ),
             Text(
               AppWords.of(context).letsGetStarted,
@@ -34,50 +39,17 @@ class AuthScreen extends StatelessWidget {
             ),
             Text(
               AppWords.of(context).letsDiveInIntoYourAccount,
-              style: context.appText.header3,
-            ),
-            //Expanded(child: SizedBox()),
-            SizedBox(
-              width: double.infinity,
-              height: 60,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(context.appColors.base1),
-                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-                ),
-                onPressed: () {},
-                child: Text(
-                  AppWords.of(context).signIn,
-                  style: context.appText.header2.copyWith(
-                    color: context.appColors.base3,
-                  ),
-                ),
-              ),
+              style: context
+                  .appText.header4, //TODO: Поменять хэдер на менее жирный шрфит
             ),
             SizedBox(
-              height: 20,
+              height: Adaptive.getHeight(80),
             ),
+            const SignInButton(),
             SizedBox(
-              width: double.infinity,
-              height: 60,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(context.appColors.base6),
-                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-                ),
-                onPressed: () {},
-                child: Text(
-                  AppWords.of(context).signUp,
-                  style: context.appText.header2.copyWith(
-                    color: context.appColors.base1,
-                  ),
-                ),
-              ),
+              height: Adaptive.getHeight(20),
             ),
+            const SignUpButton(),
           ],
         ),
       ),
