@@ -5,6 +5,7 @@ import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/core/views/widgets/custom_back_button.dart';
 import 'package:habit_tracker/main.dart';
 
+//TODO: Сделать инпут поля ввода данных
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 

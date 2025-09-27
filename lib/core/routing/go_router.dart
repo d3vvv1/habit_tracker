@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/views/screens/account_screen.dart';
+import 'package:habit_tracker/core/views/screens/app_appearance_screen.dart';
 import 'package:habit_tracker/core/views/screens/auth_screen.dart';
 import 'package:habit_tracker/core/views/screens/habit_creation_screen.dart';
 import 'package:habit_tracker/core/views/screens/profile_screen.dart';
@@ -9,7 +10,7 @@ import 'package:habit_tracker/core/views/screens/sign_in_screen.dart';
 class AppRouter {
   AppRouter();
   late final router = GoRouter(
-    initialLocation: '/account',
+    initialLocation: '/settings',
     // redirect: (context, state) {
     //   bool isConnectedDevice = GetIt.instance
     //       .get<BluetoothManager>()
@@ -48,6 +49,11 @@ class AppRouter {
         path: '/account',
         name: AppRouteNames.account,
         builder: (context, state) => const AccountScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        name: AppRouteNames.settings,
+        builder: (context, state) => const AppAppearanceScreen(),
       ),
       // GoRoute(
       //   path: '/reportExe/:index',
