@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
-import 'package:habit_tracker/core/views/custom_app_bar.dart';
-import 'package:habit_tracker/core/views/custom_back_button.dart';
+import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
+import 'package:habit_tracker/core/views/widgets/custom_back_button.dart';
 import 'package:habit_tracker/main.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -12,6 +12,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        backgroundColor: context.appColors.base2,
         backButton: const CustomBackButton(),
         title: Text(
           AppWords.of(context).signIn,

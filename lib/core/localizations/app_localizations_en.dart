@@ -101,6 +101,90 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get onTheseDay => 'On these day:';
+
+  @override
+  String get monday => 'Monday';
+
+  @override
+  String get tuesday => 'Tuesday';
+
+  @override
+  String get wednesday => 'Wednesday';
+
+  @override
+  String get thursday => 'Thursday';
+
+  @override
+  String get friday => 'Friday';
+
+  @override
+  String get saturday => 'Saturday';
+
+  @override
+  String get sunday => 'Sunday';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Demale';
+
+  @override
+  String get birthDate => 'Birthdate';
+
+  @override
+  String get appAppearance => 'App Appearance';
+
+  @override
+  String get appLanguage => 'App Language';
+
+  @override
+  String get selectLanguage => 'Select language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
+
+  @override
+  String get chooseTheme => 'Choose Theme';
+
+  @override
+  String get systemDefault => 'System Default';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get logoutWarning => 'Are you sure you want to log out?';
+
+  @override
+  String get yesLogout => 'Yes, logout';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
   String get streak => 'Streak';
 
   @override

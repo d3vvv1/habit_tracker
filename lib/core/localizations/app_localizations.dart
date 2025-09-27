@@ -278,6 +278,174 @@ abstract class AppLocalizations {
   /// **'{days} дней'**
   String nDays(int days);
 
+  /// No description provided for @onTheseDay.
+  ///
+  /// In ru, this message translates to:
+  /// **'В эти дни:'**
+  String get onTheseDay;
+
+  /// No description provided for @monday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Понедельник'**
+  String get monday;
+
+  /// No description provided for @tuesday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вторник'**
+  String get tuesday;
+
+  /// No description provided for @wednesday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Среда'**
+  String get wednesday;
+
+  /// No description provided for @thursday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Четверг'**
+  String get thursday;
+
+  /// No description provided for @friday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пятница'**
+  String get friday;
+
+  /// No description provided for @saturday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Суббота'**
+  String get saturday;
+
+  /// No description provided for @sunday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Воскресенье'**
+  String get sunday;
+
+  /// No description provided for @fullName.
+  ///
+  /// In ru, this message translates to:
+  /// **'Полное имя'**
+  String get fullName;
+
+  /// No description provided for @gender.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пол'**
+  String get gender;
+
+  /// No description provided for @male.
+  ///
+  /// In ru, this message translates to:
+  /// **'Мужчина'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In ru, this message translates to:
+  /// **'Женщина'**
+  String get female;
+
+  /// No description provided for @birthDate.
+  ///
+  /// In ru, this message translates to:
+  /// **'Дата рождения'**
+  String get birthDate;
+
+  /// No description provided for @appAppearance.
+  ///
+  /// In ru, this message translates to:
+  /// **'Внешний вид приложения'**
+  String get appAppearance;
+
+  /// No description provided for @appLanguage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Язык приложения'**
+  String get appLanguage;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выберите язык'**
+  String get selectLanguage;
+
+  /// No description provided for @english.
+  ///
+  /// In ru, this message translates to:
+  /// **'Английский'**
+  String get english;
+
+  /// No description provided for @russian.
+  ///
+  /// In ru, this message translates to:
+  /// **'Русский'**
+  String get russian;
+
+  /// No description provided for @theme.
+  ///
+  /// In ru, this message translates to:
+  /// **'Тема'**
+  String get theme;
+
+  /// No description provided for @light.
+  ///
+  /// In ru, this message translates to:
+  /// **'Светлая'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In ru, this message translates to:
+  /// **'Темная'**
+  String get dark;
+
+  /// No description provided for @chooseTheme.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выберите тему'**
+  String get chooseTheme;
+
+  /// No description provided for @systemDefault.
+  ///
+  /// In ru, this message translates to:
+  /// **'Системная по-умолчанию'**
+  String get systemDefault;
+
+  /// No description provided for @profile.
+  ///
+  /// In ru, this message translates to:
+  /// **'Профиль'**
+  String get profile;
+
+  /// No description provided for @logout.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выйти из аккаунта'**
+  String get logout;
+
+  /// No description provided for @logoutWarning.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вы уверены, что хотите выйти?'**
+  String get logoutWarning;
+
+  /// No description provided for @yesLogout.
+  ///
+  /// In ru, this message translates to:
+  /// **'Да, выйти'**
+  String get yesLogout;
+
+  /// No description provided for @cancel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Отмена'**
+  String get cancel;
+
   /// No description provided for @streak.
   ///
   /// In ru, this message translates to:

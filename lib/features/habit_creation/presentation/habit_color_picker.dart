@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 
+//TODO: Сделать диалог с выбором цвета из палитры
 class HabitColorPicker extends StatefulWidget {
   const HabitColorPicker({super.key});
 

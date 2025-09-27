@@ -14,3 +14,13 @@ enum DayTimeType {
   afternoon,
   evening,
 }
+
+enum DayNames {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}

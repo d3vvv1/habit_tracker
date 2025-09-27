@@ -1,13 +1,15 @@
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/routing/app_route_names.dart';
-import 'package:habit_tracker/features/auth/presentation/auth_screen.dart';
-import 'package:habit_tracker/features/habit_creation/presentation/habit_creation_screen.dart';
-import 'package:habit_tracker/features/sign_in/presentation/sign_in_screen.dart';
+import 'package:habit_tracker/core/views/screens/account_screen.dart';
+import 'package:habit_tracker/core/views/screens/auth_screen.dart';
+import 'package:habit_tracker/core/views/screens/habit_creation_screen.dart';
+import 'package:habit_tracker/core/views/screens/profile_screen.dart';
+import 'package:habit_tracker/core/views/screens/sign_in_screen.dart';
 
 class AppRouter {
   AppRouter();
   late final router = GoRouter(
-    initialLocation: '/createHabit',
+    initialLocation: '/account',
     // redirect: (context, state) {
     //   bool isConnectedDevice = GetIt.instance
     //       .get<BluetoothManager>()
@@ -36,6 +38,16 @@ class AppRouter {
         path: '/createHabit',
         name: AppRouteNames.createHabit,
         builder: (context, state) => const HabitCreationScreen(),
+      ),
+      GoRoute(
+        path: '/profile',
+        name: AppRouteNames.profile,
+        builder: (context, state) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: '/account',
+        name: AppRouteNames.account,
+        builder: (context, state) => const AccountScreen(),
       ),
       // GoRoute(
       //   path: '/reportExe/:index',

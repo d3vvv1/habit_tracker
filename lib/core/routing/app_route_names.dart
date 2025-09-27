@@ -7,4 +7,5 @@ class AppRouteNames {
   static const String report = 'report';
   static const String createHabit = 'createHabit';
   static const String habit = 'habit';
+  static const String account = 'account';
 }

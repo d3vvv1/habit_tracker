@@ -101,6 +101,90 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get onTheseDay => 'В эти дни:';
+
+  @override
+  String get monday => 'Понедельник';
+
+  @override
+  String get tuesday => 'Вторник';
+
+  @override
+  String get wednesday => 'Среда';
+
+  @override
+  String get thursday => 'Четверг';
+
+  @override
+  String get friday => 'Пятница';
+
+  @override
+  String get saturday => 'Суббота';
+
+  @override
+  String get sunday => 'Воскресенье';
+
+  @override
+  String get fullName => 'Полное имя';
+
+  @override
+  String get gender => 'Пол';
+
+  @override
+  String get male => 'Мужчина';
+
+  @override
+  String get female => 'Женщина';
+
+  @override
+  String get birthDate => 'Дата рождения';
+
+  @override
+  String get appAppearance => 'Внешний вид приложения';
+
+  @override
+  String get appLanguage => 'Язык приложения';
+
+  @override
+  String get selectLanguage => 'Выберите язык';
+
+  @override
+  String get english => 'Английский';
+
+  @override
+  String get russian => 'Русский';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get light => 'Светлая';
+
+  @override
+  String get dark => 'Темная';
+
+  @override
+  String get chooseTheme => 'Выберите тему';
+
+  @override
+  String get systemDefault => 'Системная по-умолчанию';
+
+  @override
+  String get profile => 'Профиль';
+
+  @override
+  String get logout => 'Выйти из аккаунта';
+
+  @override
+  String get logoutWarning => 'Вы уверены, что хотите выйти?';
+
+  @override
+  String get yesLogout => 'Да, выйти';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
   String get streak => 'Серия';
 
   @override

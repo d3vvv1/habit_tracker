@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //TODO: Спрятать в мэйне
     Adaptive.height = MediaQuery.sizeOf(context).height -
         MediaQuery.viewPaddingOf(context).top -
         MediaQuery.viewPaddingOf(context).bottom;
