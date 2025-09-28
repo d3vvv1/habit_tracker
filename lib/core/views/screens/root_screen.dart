@@ -4,7 +4,6 @@ import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/main.dart';
 
 class RootScreen extends StatelessWidget {
-  /// Контейнер для навигационного бара.
   final StatefulNavigationShell navigationShell;
   const RootScreen({super.key, required this.navigationShell});
 
@@ -14,32 +13,28 @@ class RootScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
-        /// Лист элементов для нижнего навигационного бара.
+        backgroundColor: context.appColors.base2,
+        selectedItemColor: context.appColors.base1,
+        selectedLabelStyle:
+            context.appText.header4.copyWith(color: context.appColors.base1),
+        unselectedItemColor: context.appColors.base4,
+        unselectedLabelStyle: context.appText.header4,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.home,
-              color: navigationShell.currentIndex == 0
-                  ? context.appColors.base1
-                  : context.appColors.base4,
             ),
             label: AppWords.of(context).home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.data_thresholding_outlined,
-              color: navigationShell.currentIndex == 1
-                  ? context.appColors.base1
-                  : context.appColors.base4,
             ),
             label: AppWords.of(context).report,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
-              color: navigationShell.currentIndex == 2
-                  ? context.appColors.base1
-                  : context.appColors.base4,
             ),
             label: AppWords.of(context).account,
           ),

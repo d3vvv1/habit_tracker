@@ -4,6 +4,7 @@ import 'package:habit_tracker/core/views/screens/account_screen.dart';
 import 'package:habit_tracker/core/views/screens/app_appearance_screen.dart';
 import 'package:habit_tracker/core/views/screens/auth_screen.dart';
 import 'package:habit_tracker/core/views/screens/habit_creation_screen.dart';
+import 'package:habit_tracker/core/views/screens/home_screen.dart';
 import 'package:habit_tracker/core/views/screens/profile_screen.dart';
 import 'package:habit_tracker/core/views/screens/root_screen.dart';
 import 'package:habit_tracker/core/views/screens/sign_in_screen.dart';
@@ -11,7 +12,7 @@ import 'package:habit_tracker/core/views/screens/sign_in_screen.dart';
 class AppRouter {
   AppRouter();
   late final router = GoRouter(
-    initialLocation: '/account',
+    initialLocation: '/home',
     // redirect: (context, state) {
     //   bool isConnectedDevice = GetIt.instance
     //       .get<BluetoothManager>()
@@ -34,18 +35,24 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/auth',
-                name: AppRouteNames.auth,
-                builder: (context, state) => const AuthScreen(),
-              ),
+                  path: '/home',
+                  name: AppRouteNames.home,
+                  builder: (context, state) => const HomeScreen(),
+                  routes: [
+                    GoRoute(
+                      path: '/createHabit',
+                      name: AppRouteNames.createHabit,
+                      builder: (context, state) => const HabitCreationScreen(),
+                    ),
+                  ]),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/createHabit',
-                name: AppRouteNames.createHabit,
-                builder: (context, state) => const HabitCreationScreen(),
+                path: '/auth',
+                name: AppRouteNames.auth,
+                builder: (context, state) => const AuthScreen(),
               ),
             ],
           ),
