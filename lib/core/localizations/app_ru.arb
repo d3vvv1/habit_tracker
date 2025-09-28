@@ -76,5 +76,8 @@
     "last6Months": "Последние 6 месяцев",
     "calendarStats": "Статистика календаря",
     "thisMonth": "Этот месяц",
+    "home": "Домой",
+    "account": "Аккаунт",
+    "email": "Email",
     "moodChart": "График настроения"
 }

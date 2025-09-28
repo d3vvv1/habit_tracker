@@ -215,5 +215,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thisMonth => 'This month';
 
   @override
+  String get home => 'Home';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get email => 'Email';
+
+  @override
   String get moodChart => 'Mood chart';
 }

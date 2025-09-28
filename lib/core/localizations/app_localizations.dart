@@ -506,6 +506,24 @@ abstract class AppLocalizations {
   /// **'Этот месяц'**
   String get thisMonth;
 
+  /// No description provided for @home.
+  ///
+  /// In ru, this message translates to:
+  /// **'Домой'**
+  String get home;
+
+  /// No description provided for @account.
+  ///
+  /// In ru, this message translates to:
+  /// **'Аккаунт'**
+  String get account;
+
+  /// No description provided for @email.
+  ///
+  /// In ru, this message translates to:
+  /// **'Email'**
+  String get email;
+
   /// No description provided for @moodChart.
   ///
   /// In ru, this message translates to:

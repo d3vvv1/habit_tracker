@@ -76,5 +76,8 @@
     "last6Months": "Last 6 months",
     "calendarStats": "Calendar stats",
     "thisMonth": "This month",
+    "home": "Home",
+    "account": "Account",
+    "email": "Email",
     "moodChart": "Mood chart"
 }

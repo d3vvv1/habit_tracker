@@ -29,7 +29,7 @@ class AppApearanceListTile extends StatelessWidget {
           color: context.appColors.base4,
         ),
       ),
-      onTap: () => context.pushNamed(AppRouteNames.profile),
+      onTap: () => context.pushNamed(AppRouteNames.settings),
     );
   }
 }

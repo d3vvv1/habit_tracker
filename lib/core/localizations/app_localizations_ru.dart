@@ -216,5 +216,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get thisMonth => 'Этот месяц';
 
   @override
+  String get home => 'Домой';
+
+  @override
+  String get account => 'Аккаунт';
+
+  @override
+  String get email => 'Email';
+
+  @override
   String get moodChart => 'График настроения';
 }
