@@ -529,6 +529,66 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'График настроения'**
   String get moodChart;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In ru, this message translates to:
+  /// **'С возвращением!'**
+  String get welcomeBack;
+
+  /// No description provided for @signInText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Войдите, чтобы получить доступ к вашему персонализированному опыту отслеживания привычек.'**
+  String get signInText;
+
+  /// No description provided for @emailFull.
+  ///
+  /// In ru, this message translates to:
+  /// **'Электронная почта'**
+  String get emailFull;
+
+  /// No description provided for @password.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пароль'**
+  String get password;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In ru, this message translates to:
+  /// **'Запомнить меня'**
+  String get rememberMe;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In ru, this message translates to:
+  /// **'Забыли пароль?'**
+  String get forgotPassword;
+
+  /// No description provided for @joinToday.
+  ///
+  /// In ru, this message translates to:
+  /// **'Присоединяйтесь к нам сегодня'**
+  String get joinToday;
+
+  /// No description provided for @signUpMessage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Начните отслеживать свои привычки сегодня. Это быстро, просто и бесплатно!'**
+  String get signUpMessage;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In ru, this message translates to:
+  /// **'Я согласен с Условиями и положениями.'**
+  String get termsAndConditions;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In ru, this message translates to:
+  /// **'Уже есть аккаунт?'**
+  String get alreadyHaveAccount;
 }
 
 class _AppLocalizationsDelegate

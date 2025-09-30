@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/data/enums.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_bloc.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_event.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_state.dart';
-import 'package:habit_tracker/main.dart';
 
 class GenderSelector extends StatefulWidget {
   const GenderSelector({super.key});

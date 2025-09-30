@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
@@ -13,7 +14,6 @@ import 'package:habit_tracker/features/profile/view/email_input_field.dart';
 import 'package:habit_tracker/features/profile/view/full_name_input_field.dart';
 import 'package:habit_tracker/features/profile/view/gender_selector.dart';
 import 'package:habit_tracker/features/profile/view/profile_avatar.dart';
-import 'package:habit_tracker/main.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

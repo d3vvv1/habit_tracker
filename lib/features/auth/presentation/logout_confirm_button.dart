@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
-import 'package:habit_tracker/main.dart';
 
 class LogoutConfirmButton extends StatelessWidget {
   const LogoutConfirmButton({super.key});

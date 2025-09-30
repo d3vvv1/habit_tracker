@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
@@ -7,7 +8,6 @@ import 'package:habit_tracker/features/habit_creation/presentation/habit_color_p
 import 'package:habit_tracker/features/habit_creation/presentation/habit_day_time_filter.dart';
 import 'package:habit_tracker/features/habit_creation/presentation/habit_regularity_filter.dart';
 import 'package:habit_tracker/features/habit_creation/presentation/habit_repeat_filter.dart';
-import 'package:habit_tracker/main.dart';
 
 class HabitCreationScreen extends StatelessWidget {
   const HabitCreationScreen({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/features/auth/presentation/logout_modal_bottom_sheet.dart';
-import 'package:habit_tracker/main.dart';
 
-class LogoutLitTile extends StatelessWidget {
-  const LogoutLitTile({super.key});
+class LogoutListTile extends StatelessWidget {
+  const LogoutListTile({super.key});
 
   @override
   Widget build(BuildContext context) {

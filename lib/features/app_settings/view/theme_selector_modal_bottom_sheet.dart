@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/cancel_button.dart';
 import 'package:habit_tracker/core/views/widgets/separator.dart';
 import 'package:habit_tracker/core/views/widgets/ok_button.dart';
-import 'package:habit_tracker/main.dart';
 
 class ThemeSelectorModalBottomSheet extends StatefulWidget {
   const ThemeSelectorModalBottomSheet({super.key});
