@@ -11,7 +11,7 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: navigationShell,
+      body: SafeArea(child: navigationShell),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: context.appColors.base2,
         selectedItemColor: context.appColors.base1,

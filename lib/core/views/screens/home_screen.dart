@@ -3,6 +3,7 @@ import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/core/views/widgets/separator.dart';
+import 'package:habit_tracker/features/habit_creation/presentation/habit_create_floating_button.dart';
 import 'package:habit_tracker/features/habits_check/data/habits_mockdata.dart';
 import 'package:habit_tracker/features/habits_check/view/habit_card.dart';
 import 'package:habit_tracker/main.dart';
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         backgroundColor: context.appColors.base2,
         resizeToAvoidBottomInset: false,
+        floatingActionButton: const HabitCreateFloatingButton(),
         appBar: CustomAppBar(
             backButton: null,
             title: Text(

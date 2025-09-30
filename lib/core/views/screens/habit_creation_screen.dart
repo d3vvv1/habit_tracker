@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/core/views/screens/emoji_selector.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/core/views/widgets/custom_back_button.dart';
 import 'package:habit_tracker/features/habit_creation/presentation/habit_color_picker.dart';
@@ -15,6 +16,7 @@ class HabitCreationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
         backgroundColor: context.appColors.base2,
         backButton: const CustomBackButton(),
@@ -26,56 +28,32 @@ class HabitCreationScreen extends StatelessWidget {
         actions: const [],
       ),
       backgroundColor: context.appColors.base2,
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: Adaptive.getWidth(20),
-        ),
-        child: Column(
-          children: [
-            const HabitRegularityFilter(),
-            SizedBox(
-              height: Adaptive.getHeight(50),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                AppWords.of(context).color,
-                style: context.appText.header3,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Adaptive.getWidth(20),
+          ),
+          child: ListView(
+            children: [
+              const HabitRegularityFilter(),
+              SizedBox(
+                height: Adaptive.getHeight(30),
               ),
-            ),
-            SizedBox(
-              height: Adaptive.getHeight(20),
-            ),
-            const HabitColorPicker(),
-            SizedBox(
-              height: Adaptive.getHeight(30),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                AppWords.of(context).repeat,
-                style: context.appText.header3,
+              EmojiSelector(),
+              SizedBox(
+                height: Adaptive.getHeight(20),
               ),
-            ),
-            SizedBox(
-              height: Adaptive.getHeight(30),
-            ),
-            const HabitRepeatFilter(),
-            SizedBox(
-              height: Adaptive.getHeight(50),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                AppWords.of(context).doItAt,
-                style: context.appText.header3,
+              const HabitColorPicker(),
+              SizedBox(
+                height: Adaptive.getHeight(20),
               ),
-            ),
-            SizedBox(
-              height: Adaptive.getHeight(30),
-            ),
-            const HabitDayTimeFilter(),
-          ],
+              const HabitRepeatFilter(),
+              SizedBox(
+                height: Adaptive.getHeight(50),
+              ),
+              const HabitDayTimeFilter(),
+            ],
+          ),
         ),
       ),
     );

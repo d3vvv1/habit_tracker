@@ -30,6 +30,7 @@ dependencies:
   flutter_bloc: ^9.1.1
 
   cupertino_icons: ^1.0.8
+  emoji_picker_flutter: ^2.2.0
 
 dev_dependencies:
   flutter_test:

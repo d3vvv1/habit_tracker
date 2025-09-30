@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/main.dart';
 
 //TODO: Сделать диалог с выбором цвета из палитры
 class HabitColorPicker extends StatefulWidget {
@@ -31,39 +33,54 @@ class _HabitColorPickerState extends State<HabitColorPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      mainAxisSpacing: Adaptive.getHeight(10),
-      crossAxisSpacing: Adaptive.getWidth(10),
-      crossAxisCount: 5,
-      children: colors.map((Color color) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              selectedColor = color;
-            });
-          },
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-            ),
-            child: selectedColor == color
-                ? Padding(
-                    padding: EdgeInsets.all(Adaptive.getByMin(10)),
-                    child: const FittedBox(
-                      fit: BoxFit.contain,
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.black,
-                      ),
-                    ),
-                  )
-                : null,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            AppWords.of(context).color,
+            style: context.appText.header3,
           ),
-        );
-      }).toList(),
+        ),
+        SizedBox(
+          height: Adaptive.getHeight(20),
+        ),
+        GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: Adaptive.getHeight(10),
+          crossAxisSpacing: Adaptive.getWidth(10),
+          crossAxisCount: 5,
+          children: colors.map((Color color) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedColor = color;
+                });
+              },
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                ),
+                child: selectedColor == color
+                    ? Padding(
+                        padding: EdgeInsets.all(Adaptive.getByMin(10)),
+                        child: const FittedBox(
+                          fit: BoxFit.contain,
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.black,
+                          ),
+                        ),
+                      )
+                    : null,
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
