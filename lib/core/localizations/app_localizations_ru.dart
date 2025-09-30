@@ -258,4 +258,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get alreadyHaveAccount => 'Уже есть аккаунт?';
+
+  @override
+  String get error => 'Ошибка!';
+
+  @override
+  String get inCorrectPassword =>
+      'Неправильный пароль! Пароль должен состоять минимум из 8 символов';
+
+  @override
+  String get inCorrectEmail => 'Неправильный email! Попробуйте еще раз';
 }

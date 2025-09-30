@@ -589,6 +589,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Уже есть аккаунт?'**
   String get alreadyHaveAccount;
+
+  /// No description provided for @error.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ошибка!'**
+  String get error;
+
+  /// No description provided for @inCorrectPassword.
+  ///
+  /// In ru, this message translates to:
+  /// **'Неправильный пароль! Пароль должен состоять минимум из 8 символов'**
+  String get inCorrectPassword;
+
+  /// No description provided for @inCorrectEmail.
+  ///
+  /// In ru, this message translates to:
+  /// **'Неправильный email! Попробуйте еще раз'**
+  String get inCorrectEmail;
 }
 
 class _AppLocalizationsDelegate

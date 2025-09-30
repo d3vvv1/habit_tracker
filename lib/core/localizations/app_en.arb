@@ -89,5 +89,8 @@
     "welcomeBack": "Welcome Back!",
     "signInText": "Sign in to access your personalized habit tracking experience.",
     "rememberMe": "Remember me",
-    "forgotPassword": "Forgot Password?"
+    "forgotPassword": "Forgot Password?",
+    "error": "Error!",
+    "inCorrectPassword": "Incorrect password! Password should be at least 8 symbols",
+    "inCorrectEmail": "Incorrect email! Try again"
 }

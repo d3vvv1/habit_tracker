@@ -57,7 +57,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(InCorrectPassword());
         return;
       } else {
-        _authService.login(_user!);
+        try {
+          bool res = await _authService.login(_user!);
+          if (res) {
+            emit(SuccessLogin());
+          }
+        } catch (e) {
+          emit(AuthError(errorText: e.toString()));
+        }
       }
     }
   }
@@ -74,7 +81,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(InCorrectPassword());
         return;
       } else {
-        _authService.signUp(_user!);
+        try {
+          bool res = await _authService.signUp(_user!);
+          if (res) {
+            emit(SuccessLogin());
+          }
+        } catch (e) {
+          emit(AuthError(errorText: e.toString()));
+        }
       }
     }
   }

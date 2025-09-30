@@ -257,4 +257,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get error => 'Error!';
+
+  @override
+  String get inCorrectPassword =>
+      'Incorrect password! Password should be at least 8 symbols';
+
+  @override
+  String get inCorrectEmail => 'Incorrect email! Try again';
 }

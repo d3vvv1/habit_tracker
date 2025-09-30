@@ -14,11 +14,10 @@ import 'package:habit_tracker/core/views/screens/sign_up_screen.dart';
 final router = GoRouter(
   initialLocation: '/home',
   redirect: (_, state) async {
-    bool isAuthenticated = FirebaseAuth.instance.currentUser != null;
-
-    if (state.fullPath!.contains('auth') && isAuthenticated) {
+    if (state.fullPath!.contains('/auth')) {
       return null;
     }
+    bool isAuthenticated = FirebaseAuth.instance.currentUser != null;
 
     // FirebaseAuth.instance.authStateChanges().listen((User? user) {
     //   if (user == null) {
