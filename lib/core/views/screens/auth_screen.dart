@@ -3,7 +3,6 @@ import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
-import 'package:habit_tracker/features/auth/presentation/google_sign_in_button.dart';
 import 'package:habit_tracker/features/auth/presentation/sign_in_button.dart';
 import 'package:habit_tracker/features/auth/presentation/sign_up_button.dart';
 
@@ -48,7 +47,7 @@ class AuthScreen extends StatelessWidget {
             SizedBox(
               height: Adaptive.getHeight(80),
             ),
-            const GoogleSingInButton(),
+            //const GoogleSingInButton(),
             SizedBox(
               height: Adaptive.getHeight(20),
             ),
