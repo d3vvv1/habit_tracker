@@ -19,14 +19,14 @@ class AppAppearanceScreen extends StatelessWidget {
         title: Text(
           AppWords.of(context).appAppearance,
           style: context.appText.header3,
+          textAlign: TextAlign.center,
         ),
         horizontalPadding: Adaptive.getWidth(10),
-        actions: const [],
       ),
       backgroundColor: context.appColors.base2,
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: Adaptive.getWidth(30),
+          horizontal: Adaptive.getWidth(10),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

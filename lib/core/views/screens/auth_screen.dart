@@ -18,7 +18,6 @@ class AuthScreen extends StatelessWidget {
         backButton: const SizedBox.shrink(),
         title: const SizedBox.shrink(),
         horizontalPadding: 20,
-        actions: const [],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(

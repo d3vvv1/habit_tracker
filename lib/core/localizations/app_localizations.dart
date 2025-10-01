@@ -413,7 +413,7 @@ abstract class AppLocalizations {
   /// No description provided for @systemDefault.
   ///
   /// In ru, this message translates to:
-  /// **'Системная по-умолчанию'**
+  /// **'Системная'**
   String get systemDefault;
 
   /// No description provided for @profile.

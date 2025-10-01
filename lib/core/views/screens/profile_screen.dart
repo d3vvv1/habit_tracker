@@ -24,10 +24,10 @@ class ProfileScreen extends StatelessWidget {
         backButton: const CustomBackButton(),
         title: Text(
           AppWords.of(context).profile,
-          style: context.appText.header2,
+          style: context.appText.header3,
+          textAlign: TextAlign.center,
         ),
         horizontalPadding: Adaptive.getWidth(20),
-        actions: const [],
       ),
       backgroundColor: context.appColors.base2,
       body: BlocProvider(
@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
         lazy: false,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: Adaptive.getWidth(30),
+            horizontal: Adaptive.getWidth(20),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

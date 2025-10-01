@@ -23,9 +23,9 @@ class HabitCreationScreen extends StatelessWidget {
         title: Text(
           AppWords.of(context).createNewHabit,
           style: context.appText.header3,
+          textAlign: TextAlign.center,
         ),
         horizontalPadding: Adaptive.getWidth(20),
-        actions: const [],
       ),
       backgroundColor: context.appColors.base2,
       body: SafeArea(

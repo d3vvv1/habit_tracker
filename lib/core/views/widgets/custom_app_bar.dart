@@ -3,7 +3,6 @@ import 'package:habit_tracker/core/utils/adaptive_val.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? backButton;
-  final List<Widget> actions;
   final Widget title;
   final double horizontalPadding;
   final Color backgroundColor;
@@ -13,7 +12,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       required this.backButton,
       required this.title,
       required this.horizontalPadding,
-      required this.actions,
       required this.backgroundColor});
 
   @override
@@ -29,28 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: ColoredBox(
           color: backgroundColor,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Expanded(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  if (backButton != null) Flexible(child: backButton!),
-                ],
-              )),
-              Expanded(
-                  flex: 3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(child: title),
-                    ],
-                  )),
-              Expanded(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: actions,
-              )),
+              if (backButton != null) backButton!,
+              Expanded(child: title),
             ],
           ),
         ),

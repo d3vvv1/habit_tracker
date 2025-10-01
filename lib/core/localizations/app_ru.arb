@@ -60,7 +60,7 @@
     "light": "Светлая",
     "dark": "Темная",
     "chooseTheme": "Выберите тему",
-    "systemDefault": "Системная по-умолчанию",
+    "systemDefault": "Системная",
     "profile": "Профиль",
     "logout": "Выйти из аккаунта",
     "logoutWarning": "Вы уверены, что хотите выйти?",

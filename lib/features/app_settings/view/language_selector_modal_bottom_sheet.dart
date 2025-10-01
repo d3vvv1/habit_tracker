@@ -5,20 +5,15 @@ import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/cancel_button.dart';
 import 'package:habit_tracker/core/views/widgets/separator.dart';
 import 'package:habit_tracker/core/views/widgets/ok_button.dart';
+import 'package:habit_tracker/features/app_settings/provider/locale_provider.dart';
+import 'package:provider/provider.dart';
 
-class LanguageSelectorModalBottomSheet extends StatefulWidget {
+class LanguageSelectorModalBottomSheet extends StatelessWidget {
   const LanguageSelectorModalBottomSheet({super.key});
 
   @override
-  State<LanguageSelectorModalBottomSheet> createState() =>
-      _LanguageSelectorModalBottomSheetState();
-}
-
-class _LanguageSelectorModalBottomSheetState
-    extends State<LanguageSelectorModalBottomSheet> {
-  Locale currentThemeMode = const Locale('en');
-  @override
   Widget build(BuildContext context) {
+    var localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     return DecoratedBox(
       decoration: BoxDecoration(
           color: context.appColors.base2,
@@ -41,31 +36,27 @@ class _LanguageSelectorModalBottomSheetState
                 style: context.appText.header3,
               ),
               const Separator(),
-              Column(
-                children: AppWords.supportedLocales.map((Locale locale) {
-                  String label = '';
-                  if (locale == const Locale('en')) {
-                    label = AppWords.of(context).english;
-                  } else if (locale == const Locale('ru')) {
-                    label = AppWords.of(context).russian;
-                  }
-                  return RadioListTile<Locale>(
-                    activeColor: context.appColors.base1,
-                    title: Text(
-                      label,
-                      style: context.appText.header4,
-                    ),
-                    value: locale,
-                    groupValue: currentThemeMode,
-                    onChanged: (newMode) {
-                      setState(() {
-                        if (newMode != null) {
-                          currentThemeMode = newMode;
-                        }
-                      });
-                    },
-                  );
-                }).toList(),
+              RadioGroup(
+                onChanged: (locale) => localeProvider.locale = locale!,
+                groupValue: localeProvider.locale,
+                child: Column(
+                  children: AppWords.supportedLocales.map((Locale locale) {
+                    String label = '';
+                    if (locale == const Locale('en')) {
+                      label = AppWords.of(context).english;
+                    } else if (locale == const Locale('ru')) {
+                      label = AppWords.of(context).russian;
+                    }
+                    return RadioListTile<Locale>(
+                      activeColor: context.appColors.base1,
+                      title: Text(
+                        label,
+                        style: context.appText.header4,
+                      ),
+                      value: locale,
+                    );
+                  }).toList(),
+                ),
               ),
               const Separator(),
               const Row(

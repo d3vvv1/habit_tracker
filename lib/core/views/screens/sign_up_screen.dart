@@ -54,70 +54,67 @@ class SignUpScreen extends StatelessWidget {
             backButton: const CustomBackButton(),
             title: const SizedBox.shrink(),
             horizontalPadding: Adaptive.getWidth(25),
-            actions: const [],
           ),
           backgroundColor: context.appColors.base2,
-          body: SafeArea(
-            child: Padding(
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: Adaptive.getWidth(25),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: AlignmentGeometry.centerLeft,
-                    child: Text(
-                      AppWords.of(context).joinToday,
-                      style: context.appText.header2,
+          body: Padding(
+            padding: EdgeInsetsGeometry.symmetric(
+              horizontal: Adaptive.getWidth(25),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.centerLeft,
+                  child: Text(
+                    AppWords.of(context).joinToday,
+                    style: context.appText.header2,
+                  ),
+                ),
+                SizedBox(
+                  height: Adaptive.getHeight(10),
+                ),
+                Text(
+                  AppWords.of(context).signUpMessage,
+                  style: context.appText.header4,
+                ), //Start you bla bla bla
+                SizedBox(
+                  height: Adaptive.getHeight(40),
+                ),
+                const EmailInputField(),
+                SizedBox(
+                  height: Adaptive.getHeight(20),
+                ),
+                const PasswordInputFiled(),
+                SizedBox(
+                  height: Adaptive.getHeight(40),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppWords.of(context).alreadyHaveAccount,
+                      style: context.appText.header4,
                     ),
-                  ),
-                  SizedBox(
-                    height: Adaptive.getHeight(10),
-                  ),
-                  Text(
-                    AppWords.of(context).signUpMessage,
-                    style: context.appText.header4,
-                  ), //Start you bla bla bla
-                  SizedBox(
-                    height: Adaptive.getHeight(40),
-                  ),
-                  const EmailInputField(),
-                  SizedBox(
-                    height: Adaptive.getHeight(20),
-                  ),
-                  const PasswordInputFiled(),
-                  SizedBox(
-                    height: Adaptive.getHeight(40),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppWords.of(context).alreadyHaveAccount,
-                        style: context.appText.header4,
+                    TextButton(
+                      onPressed: () {
+                        context.pushNamed(AppRouteNames.signIn);
+                      },
+                      child: Text(
+                        AppWords.of(context).signIn,
+                        style: context.appText.header4
+                            .copyWith(color: context.appColors.base1),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          context.pushNamed(AppRouteNames.signIn);
-                        },
-                        child: Text(
-                          AppWords.of(context).signIn,
-                          style: context.appText.header4
-                              .copyWith(color: context.appColors.base1),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Expanded(
-                    child: SizedBox(),
-                  ),
-                  const CompleteSignUpButton(),
-                  SizedBox(
-                    height: Adaptive.getHeight(20),
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+                const CompleteSignUpButton(),
+                SizedBox(
+                  height: Adaptive.getHeight(20),
+                ),
+              ],
             ),
           ),
         ),

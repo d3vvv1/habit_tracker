@@ -61,6 +61,7 @@ class _EmailInputFieldState extends State<EmailInputField> {
                   controller: _emailController,
                   focusNode: focusNode,
                   keyboardType: TextInputType.emailAddress,
+                  style: context.appText.header4,
                   decoration: InputDecoration(
                     icon: Icon(
                       Icons.email_outlined,

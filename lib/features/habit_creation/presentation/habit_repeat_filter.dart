@@ -48,25 +48,21 @@ class _HabitRepeatFilterState extends State<HabitRepeatFilter> {
                 return FilterChip(
                     label: SizedBox(
                       height: Adaptive.getHeight(30),
-                      width: Adaptive.getWidth(80),
-                      child: Align(
-                        alignment: Alignment.center,
+                      width: Adaptive.getWidth(105),
+                      child: Center(
                         child: Text(
                           label,
                           style: filters.contains(type)
-                              ? Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                      color: const Color.fromRGBO(
-                                          255, 255, 255, 1))
-                              : Theme.of(context).textTheme.titleMedium,
+                              ? context.appText.header4.copyWith(
+                                  color: const Color.fromRGBO(255, 255, 255, 1))
+                              : context.appText.header4,
                         ),
                       ),
                     ),
                     selectedColor: context.appColors.base1,
                     showCheckmark: false,
                     backgroundColor: context.appColors.base2,
+                    labelPadding: EdgeInsets.zero,
                     side: BorderSide(
                       width: Adaptive.getByMin(2),
                       color: context.appColors.base3,

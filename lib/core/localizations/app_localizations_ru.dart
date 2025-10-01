@@ -167,7 +167,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chooseTheme => 'Выберите тему';
 
   @override
-  String get systemDefault => 'Системная по-умолчанию';
+  String get systemDefault => 'Системная';
 
   @override
   String get profile => 'Профиль';

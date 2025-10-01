@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 
@@ -16,7 +17,9 @@ class OkButton extends StatelessWidget {
         height: Adaptive.getHeight(60),
         width: Adaptive.getWidth(180),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pop();
+          },
           child: Text(
             'OK', //TODO: Поменять хардкод
             style: context.appText.header4.copyWith(

@@ -28,9 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text(
               AppWords.of(context).home,
               style: context.appText.header3,
+              textAlign: TextAlign.center,
             ),
             horizontalPadding: Adaptive.getWidth(20),
-            actions: [],
             backgroundColor: context.appColors.base2),
         body: Padding(
           padding: EdgeInsets.symmetric(

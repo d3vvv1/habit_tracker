@@ -18,7 +18,7 @@ class AppTextStyles {
       header3: TextStyle(
         color: Colors.black,
         fontFamily: 'Roboto',
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
       header4: TextStyle(
@@ -56,7 +56,7 @@ class AppTextStyles {
       header3: TextStyle(
         color: Colors.white,
         fontFamily: 'Roboto',
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
       header4: TextStyle(

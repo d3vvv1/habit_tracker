@@ -7,42 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:688784644139:android:86ae363e48dde55f7c726e",
-        "android_client_info": {
-          "package_name": "com.example.daily_victory_project"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "688784644139-eluhvkbgoocum2aekqkjnqrchf5ans0f.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDLDFM7fuTRFrHEFDAU-Cd9WSXWxZNu_yc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "688784644139-eluhvkbgoocum2aekqkjnqrchf5ans0f.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "688784644139-c6e6pjmgv1vf338eq97f8elqmi8ovgj9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.habitTracker"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:688784644139:android:4df7da765c7efcae7c726e",
         "android_client_info": {
           "package_name": "com.example.habit_tracker"

@@ -63,6 +63,7 @@ class _PasswordInputFiledState extends State<PasswordInputFiled> {
                   focusNode: _focusNode,
                   controller: _passwordController,
                   obscureText: _obscureText,
+                  style: context.appText.header4,
                   decoration: InputDecoration(
                       icon: Icon(
                         Icons.lock_outline,
