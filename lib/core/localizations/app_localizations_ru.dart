@@ -226,4 +226,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get moodChart => 'График настроения';
+
+  @override
+  String get welcomeBack => 'С возвращением!';
+
+  @override
+  String get signInText =>
+      'Войдите, чтобы получить доступ к вашему персонализированному опыту отслеживания привычек.';
+
+  @override
+  String get emailFull => 'Электронная почта';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get rememberMe => 'Запомнить меня';
+
+  @override
+  String get forgotPassword => 'Забыли пароль?';
+
+  @override
+  String get joinToday => 'Присоединяйтесь к нам сегодня';
+
+  @override
+  String get signUpMessage =>
+      'Начните отслеживать свои привычки сегодня. Это быстро, просто и бесплатно!';
+
+  @override
+  String get termsAndConditions => 'Я согласен с Условиями и положениями.';
+
+  @override
+  String get alreadyHaveAccount => 'Уже есть аккаунт?';
+
+  @override
+  String get error => 'Ошибка!';
+
+  @override
+  String get inCorrectPassword =>
+      'Неправильный пароль! Пароль должен состоять минимум из 8 символов';
+
+  @override
+  String get inCorrectEmail => 'Неправильный email! Попробуйте еще раз';
 }

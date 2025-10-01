@@ -1,44 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/core/localizations/app_words.dart';
-import 'package:habit_tracker/core/routing/go_router.dart';
-import 'package:habit_tracker/core/theme/app_dark_theme.dart';
-import 'package:habit_tracker/core/theme/app_light_theme.dart';
-import 'package:habit_tracker/core/theme/colors/app_theme_colors.dart';
-import 'package:habit_tracker/core/theme/text_themes/app_theme_text_styles.dart';
-import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/di/injector.dart';
+import 'package:habit_tracker/habit_tracker_app.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-extension BuildContextExtension on BuildContext {
-  AppThemeTextStyles get appText =>
-      Theme.of(this).extension<AppThemeTextStyles>()!;
-  AppThemeColors get appColors => Theme.of(this).extension<AppThemeColors>()!;
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  setupDependencies();
 
-void main() {
   runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    Adaptive.height = MediaQuery.sizeOf(context).height -
-        MediaQuery.viewPaddingOf(context).top -
-        MediaQuery.viewPaddingOf(context).bottom;
-    Adaptive.width = MediaQuery.sizeOf(context).width;
-    Adaptive.viewPaddingTop = MediaQuery.viewPaddingOf(context).top;
-    return MaterialApp.router(
-      themeMode: ThemeMode.light,
-      darkTheme: createDarkTheme(),
-      theme: createLightTheme(),
-      localizationsDelegates: AppWords.localizationDelegates,
-      supportedLocales: const [
-        Locale('ru', 'RU'),
-        Locale('en', 'US'),
-      ],
-      locale: AppWords.locale,
-      routerConfig: AppRouter().router,
-    );
-  }
 }

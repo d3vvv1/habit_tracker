@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
+import 'package:habit_tracker/core/services/auth/auth_service.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
-import 'package:habit_tracker/main.dart';
 
 class LogoutConfirmButton extends StatelessWidget {
   const LogoutConfirmButton({super.key});
@@ -17,7 +20,12 @@ class LogoutConfirmButton extends StatelessWidget {
         height: Adaptive.getHeight(60),
         width: Adaptive.getWidth(180),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            await GetIt.instance<AuthService>().logout();
+            if (context.mounted) {
+              context.pop();
+            }
+          },
           child: Text(
             AppWords.of(context).yesLogout,
             style: context.appText.header4.copyWith(

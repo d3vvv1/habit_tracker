@@ -79,5 +79,18 @@
     "home": "Home",
     "account": "Account",
     "email": "Email",
-    "moodChart": "Mood chart"
+    "emailFull": "Email",
+    "moodChart": "Mood chart",
+    "joinToday": "Join Us today",
+    "signUpMessage": "Start track your habits today. It's quick, easy, and free!",
+    "password": "Password",
+    "termsAndConditions": "I agree Terms & Conditions.",
+    "alreadyHaveAccount": "Already have an account?",
+    "welcomeBack": "Welcome Back!",
+    "signInText": "Sign in to access your personalized habit tracking experience.",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "error": "Error!",
+    "inCorrectPassword": "Incorrect password! Password should be at least 8 symbols",
+    "inCorrectEmail": "Incorrect email! Try again"
 }

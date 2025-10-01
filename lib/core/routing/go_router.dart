@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/views/screens/account_screen.dart';
@@ -8,93 +9,95 @@ import 'package:habit_tracker/core/views/screens/home_screen.dart';
 import 'package:habit_tracker/core/views/screens/profile_screen.dart';
 import 'package:habit_tracker/core/views/screens/root_screen.dart';
 import 'package:habit_tracker/core/views/screens/sign_in_screen.dart';
+import 'package:habit_tracker/core/views/screens/sign_up_screen.dart';
 
-class AppRouter {
-  AppRouter();
-  late final router = GoRouter(
-    initialLocation: '/home',
-    // redirect: (context, state) {
-    //   bool isConnectedDevice = GetIt.instance
-    //       .get<BluetoothManager>()
-    //       .getConnectedDeviceName()
-    //       .isNotEmpty;
-    //   if (!isConnectedDevice && _isExercisePath(state.fullPath!)) {
-    //     extra = state.fullPath!.replaceFirst('/', '');
-    //     return '/${AppRouteNames.connection}';
+final router = GoRouter(
+  initialLocation: '/home',
+  redirect: (_, state) async {
+    if (state.fullPath!.contains('/auth')) {
+      return null;
+    }
+    bool isAuthenticated = FirebaseAuth.instance.currentUser != null;
+
+    // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    //   if (user == null) {
+    //     isAuthenticated = false;
     //   } else {
-    //     //extra = null;
-    //     return null;
+    //     isAuthenticated = true;
     //   }
-    // },
-    routes: [
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => RootScreen(
-          navigationShell: navigationShell,
-        ),
-        branches: [
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                  path: '/home',
-                  name: AppRouteNames.home,
-                  builder: (context, state) => const HomeScreen(),
-                  routes: [
-                    GoRoute(
-                      path: '/createHabit',
-                      name: AppRouteNames.createHabit,
-                      builder: (context, state) => const HabitCreationScreen(),
-                    ),
-                  ]),
-            ],
+    // });
+
+    if (!isAuthenticated) return '/auth';
+    return null;
+  },
+  routes: [
+    GoRoute(
+        path: '/auth',
+        name: AppRouteNames.auth,
+        builder: (context, state) => const AuthScreen(),
+        routes: [
+          GoRoute(
+            path: '/signIn',
+            name: AppRouteNames.signIn,
+            builder: (context, state) => const SignInScreen(),
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/auth',
-                name: AppRouteNames.auth,
-                builder: (context, state) => const AuthScreen(),
-              ),
-            ],
+          GoRoute(
+            path: '/signUp',
+            name: AppRouteNames.signUp,
+            builder: (context, state) => const SignUpScreen(),
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/account',
-                name: AppRouteNames.account,
-                builder: (context, state) => const AccountScreen(),
+        ]),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => RootScreen(
+        navigationShell: navigationShell,
+      ),
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+                path: '/home',
+                name: AppRouteNames.home,
+                builder: (context, state) => const HomeScreen(),
                 routes: [
                   GoRoute(
-                    path: '/profile',
-                    name: AppRouteNames.profile,
-                    builder: (context, state) => const ProfileScreen(),
+                    path: '/createHabit',
+                    name: AppRouteNames.createHabit,
+                    builder: (context, state) => const HabitCreationScreen(),
                   ),
-                  GoRoute(
-                    path: '/settings',
-                    name: AppRouteNames.settings,
-                    builder: (context, state) => const AppAppearanceScreen(),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        path: '/signIn',
-        name: AppRouteNames.signIn,
-        builder: (context, state) => const SignInScreen(),
-      ),
-      // // GoRoute(
-      // //   path: '/reportExe/:index',
-      // //   name: AppRouteNames.reportExe,
-      // //   builder: (context, state) => ReportScreen(
-      // //     index: (state.pathParameters['index'] == 'null')
-      // //         ? null
-      // //         : int.parse(state.pathParameters['index']!),
-      // //   ),
-      // // ),
-    ],
-
-    //errorBuilder: (context, state) => CustomErrorWidget(errorDetails: state.error.toString()),
-  );
-}
+                ]),
+          ],
+        ),
+        // StatefulShellBranch(
+        //   routes: [
+        //     GoRoute(
+        //       path: '/auth',
+        //       name: AppRouteNames.auth,
+        //       builder: (context, state) => const AuthScreen(),
+        //     ),
+        //   ],
+        // ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/account',
+              name: AppRouteNames.account,
+              builder: (context, state) => const AccountScreen(),
+              routes: [
+                GoRoute(
+                  path: '/profile',
+                  name: AppRouteNames.profile,
+                  builder: (context, state) => const ProfileScreen(),
+                ),
+                GoRoute(
+                  path: '/settings',
+                  name: AppRouteNames.settings,
+                  builder: (context, state) => const AppAppearanceScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+);

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
+import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
-import 'package:habit_tracker/main.dart';
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton({super.key});
@@ -17,7 +19,9 @@ class SignUpButton extends StatelessWidget {
           shape: WidgetStatePropertyAll(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
         ),
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(AppRouteNames.signUp);
+        },
         child: Text(
           AppWords.of(context).signUp,
           style: context.appText.header4.copyWith(

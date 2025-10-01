@@ -225,4 +225,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get moodChart => 'Mood chart';
+
+  @override
+  String get welcomeBack => 'Welcome Back!';
+
+  @override
+  String get signInText =>
+      'Sign in to access your personalized habit tracking experience.';
+
+  @override
+  String get emailFull => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get rememberMe => 'Remember me';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get joinToday => 'Join Us today';
+
+  @override
+  String get signUpMessage =>
+      'Start track your habits today. It\'s quick, easy, and free!';
+
+  @override
+  String get termsAndConditions => 'I agree Terms & Conditions.';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get error => 'Error!';
+
+  @override
+  String get inCorrectPassword =>
+      'Incorrect password! Password should be at least 8 symbols';
+
+  @override
+  String get inCorrectEmail => 'Incorrect email! Try again';
 }

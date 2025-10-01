@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/features/auth/presentation/sign_in_button.dart';
 import 'package:habit_tracker/features/auth/presentation/sign_up_button.dart';
-import 'package:habit_tracker/main.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -14,11 +14,12 @@ class AuthScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.appColors.base3,
       appBar: CustomAppBar(
-          backgroundColor: context.appColors.base2,
-          backButton: const SizedBox.shrink(),
-          title: const SizedBox.shrink(),
-          horizontalPadding: 20,
-          actions: []),
+        backgroundColor: context.appColors.base3,
+        backButton: const SizedBox.shrink(),
+        title: const SizedBox.shrink(),
+        horizontalPadding: 20,
+        actions: const [],
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: Adaptive.getWidth(25),
@@ -45,6 +46,10 @@ class AuthScreen extends StatelessWidget {
             ),
             SizedBox(
               height: Adaptive.getHeight(80),
+            ),
+            //const GoogleSingInButton(),
+            SizedBox(
+              height: Adaptive.getHeight(20),
             ),
             const SignInButton(),
             SizedBox(

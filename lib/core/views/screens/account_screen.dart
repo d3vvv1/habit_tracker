@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/features/app_settings/view/app_apearance_list_tile.dart';
-import 'package:habit_tracker/features/auth/presentation/logout_lit_tile.dart';
+import 'package:habit_tracker/features/auth/presentation/logout_list_tile.dart';
 import 'package:habit_tracker/features/profile/view/profile_list_tile.dart';
-import 'package:habit_tracker/main.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -39,7 +39,7 @@ class AccountScreen extends StatelessWidget {
                 children: [
                   ProfileLitTile(),
                   AppApearanceListTile(),
-                  LogoutLitTile(),
+                  LogoutListTile(),
                 ],
               ),
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:habit_tracker/main.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({super.key});
