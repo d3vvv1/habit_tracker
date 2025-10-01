@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/routing/app_route_names.dart';
-import 'package:habit_tracker/main.dart';
 
 class HabitCreateFloatingButton extends StatelessWidget {
   const HabitCreateFloatingButton({super.key});

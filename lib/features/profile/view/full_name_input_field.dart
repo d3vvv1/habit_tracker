@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/extensions/build_context_extension.dart';
+import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_bloc.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_event.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_state.dart';
 
-//TODO: Спиздить фокус нод из слр
 class FullNameInputField extends StatefulWidget {
   final String? name;
   const FullNameInputField({super.key, this.name});
@@ -17,12 +17,25 @@ class FullNameInputField extends StatefulWidget {
 
 class _FullNameInputFieldState extends State<FullNameInputField> {
   final _nameController = TextEditingController();
+  final _focusNode = FocusNode();
 
-  String? _validateName(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'Имя обязательно должно быть заполнено';
-    }
-    return null;
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
+        context.read<ProfileBloc>().add(
+              ChangeName(newName: _nameController.text),
+            );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,31 +50,46 @@ class _FullNameInputFieldState extends State<FullNameInputField> {
         if (state is NameChanged) {
           _nameController.text = state.newName;
         }
-        return SizedBox(
-          width: double.infinity,
-          height: Adaptive.getHeight(55),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                color: context.appColors.base3,
-                borderRadius: BorderRadius.circular(8)),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Adaptive.getWidth(10)),
-              child: TextFormField(
-                controller: _nameController,
-                maxLength: 50,
-                style: context.appText.header4,
-                keyboardType: TextInputType.name,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  counterText: '',
-                ),
-                validator: _validateName,
-                onFieldSubmitted: (value) => context.read<ProfileBloc>().add(
-                      ChangeName(newName: value),
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppWords.of(context).fullName,
+              style: context.appText.header3,
+            ),
+            SizedBox(
+              height: Adaptive.getHeight(10),
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: Adaptive.getHeight(55),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: context.appColors.base3,
+                    borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: Adaptive.getWidth(10)),
+                  child: TextFormField(
+                    controller: _nameController,
+                    focusNode: _focusNode,
+                    maxLength: 50,
+                    style: context.appText.header4,
+                    keyboardType: TextInputType.name,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      counterText: '',
                     ),
+                    onFieldSubmitted: (value) =>
+                        context.read<ProfileBloc>().add(
+                              ChangeName(newName: value),
+                            ),
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         );
       },
     );

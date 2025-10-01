@@ -39,7 +39,7 @@ class HabitCreationScreen extends StatelessWidget {
               SizedBox(
                 height: Adaptive.getHeight(30),
               ),
-              EmojiSelector(),
+              // EmojiSelector(),
               SizedBox(
                 height: Adaptive.getHeight(20),
               ),

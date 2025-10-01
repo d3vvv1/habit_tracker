@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
+
 import 'package:habit_tracker/data/enums.dart';
 
 sealed class ProfileEvent {}
@@ -10,9 +11,7 @@ class ChangeEmail extends ProfileEvent {
 }
 
 class ChangeAvatar extends ProfileEvent {
-  final Image newImage;
-
-  ChangeAvatar({required this.newImage});
+  ChangeAvatar();
 }
 
 class ChangeName extends ProfileEvent {

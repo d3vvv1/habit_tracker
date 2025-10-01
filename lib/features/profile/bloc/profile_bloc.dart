@@ -1,12 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_event.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_state.dart';
+import 'package:habit_tracker/features/profile/domain/image_picker_manager.dart';
+import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
 import 'package:habit_tracker/features/profile/domain/profile_manager.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final ProfileManager _manager;
-  ProfileBloc(super.initialState, {required ProfileManager manager})
-      : _manager = manager {
+  // final ProfileInterface _manager = GetIt.instance<>();
+  final ProfileInterface _manager = ProfileManager();
+  ProfileBloc() : super(Test()) {
     on<ChangeAvatar>(_onChangeAvatar);
     on<ChangeBirthDate>(_onChangeBirthDate);
     on<ChangeGender>(_onChangeGender);
@@ -18,39 +21,45 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ChangeAvatar event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.changeAvatar(event.newImage);
-    emit(AvatarChanged(newAvatar: _manager.profile.avatar!));
+    XFile? res = await ImagePickerManager.pickImageFromGallery();
+    if (res != null) {
+      var bytes = await res.readAsBytes();
+      _manager.setAvatar(bytes);
+      emit(AvatarChanged(newAvatar: bytes));
+    }
+
+    emit(AvatarChanged(newAvatar: _manager.avatar));
   }
 
   Future<void> _onChangeName(
     ChangeName event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.changeName(event.newName);
-    emit(NameChanged(newName: _manager.profile.fullName!));
+    _manager.setName(event.newName);
+    emit(NameChanged(newName: _manager.name));
   }
 
   Future<void> _onChangeGender(
     ChangeGender event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.changeGender(event.newGender);
-    emit(GenderChanged(newGender: _manager.profile.gender!));
+    _manager.setGender(event.newGender);
+    emit(GenderChanged(newGender: _manager.gender));
   }
 
   Future<void> _onChangeBirthDate(
     ChangeBirthDate event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.changeBirthDate(event.newBirthDate);
-    emit(BirthDateChanged(newBirthDate: _manager.profile.birthDate!));
+    _manager.setBirthday(event.newBirthDate);
+    emit(BirthDateChanged(newBirthDate: _manager.birthDate));
   }
 
   Future<void> _onChangeEmail(
     ChangeEmail event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.changeEmail(event.newEmail);
-    emit(EmailChanged(newEmail: _manager.profile.email));
+    _manager.setEmail(event.newEmail);
+    emit(EmailChanged(newEmail: _manager.email));
   }
 }

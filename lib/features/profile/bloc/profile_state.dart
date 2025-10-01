@@ -1,17 +1,20 @@
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
+
 import 'package:habit_tracker/data/enums.dart';
-import 'package:habit_tracker/features/profile/data/profile_entity.dart';
+import 'package:habit_tracker/features/profile/data/profile_data.dart';
 
 sealed class ProfileState {}
 
+class Test extends ProfileState {}
+
 class InitProfile extends ProfileState {
-  final ProfileEntity profile;
+  final ProfileData profile;
 
   InitProfile({required this.profile});
 }
 
 class AvatarChanged extends ProfileState {
-  final Image newAvatar;
+  final Uint8List newAvatar;
 
   AvatarChanged({required this.newAvatar});
 }
