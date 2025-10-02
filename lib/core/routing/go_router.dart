@@ -60,8 +60,8 @@ final router = GoRouter(
                 builder: (context, state) => const HomeScreen(),
                 routes: [
                   GoRoute(
-                    path: '/createHabit/:name',
-                    name: AppRouteNames.createHabit,
+                    path: '/editHabit/:name',
+                    name: AppRouteNames.editHabit,
                     builder: (context, state) => HabitCreationScreen(
                       name: state.pathParameters['name'] ?? '',
                     ),

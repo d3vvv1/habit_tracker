@@ -625,6 +625,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Выполнить'**
   String get complete;
+
+  /// No description provided for @editHabit.
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактирование привычки'**
+  String get editHabit;
 }
 
 class _AppLocalizationsDelegate

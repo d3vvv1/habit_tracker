@@ -39,7 +39,7 @@ class EmojiButton extends StatelessWidget {
                 )),
             child: TextButton(
               onPressed: () {
-                context.read<HabitEditingBloc>().add(SetIcon(icon: emoji));
+                bloc.add(SetIcon(icon: emoji));
               },
               style: ButtonStyle(
                   shape: WidgetStatePropertyAll(

@@ -277,4 +277,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get complete => 'Выполнить';
+
+  @override
+  String get editHabit => 'Редактирование привычки';
 }

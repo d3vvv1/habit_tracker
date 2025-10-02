@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit_basic_data.dart';
 import 'package:habit_tracker/data/habits_mockdata.dart';
 import 'package:habit_tracker/features/habits_check/domain/repositories/habit_repository_interface.dart';
@@ -7,12 +8,14 @@ class HabitRepositoryMock implements HabitRepositoryInterface {
   final List<HabitBasic> _completedHabits = List.empty(growable: true);
   final List<HabitBasic> _unCompletedHabits = List.empty(growable: true);
   HabitBasic? _selectedHabit;
+  ValueNotifier<bool> haveChanges = ValueNotifier(false);
   @override
   void completeHabit(int id) {
     for (var habit in _userHabits) {
       if (habit.id == id) {
         completedHabits.add(habit);
         unCompletedHabits.remove(habit);
+        haveChanges.value = !haveChanges.value;
       }
     }
   }
@@ -44,12 +47,14 @@ class HabitRepositoryMock implements HabitRepositoryInterface {
   }
 
   @override
-  void selectCurrentHabit(int id) {
+  void selectCurrentHabit(int? id) {
     for (var habit in _userHabits) {
       if (habit.id == id) {
         _selectedHabit = habit;
+        return;
       }
     }
+    _selectedHabit = null;
   }
 
   @override
@@ -60,7 +65,19 @@ class HabitRepositoryMock implements HabitRepositoryInterface {
 
   @override
   void addNewHabit(HabitBasic habit) {
+    for (var userHabit in _userHabits) {
+      if (userHabit.id == habit.id) {
+        userHabit = habit;
+        haveChanges.value = !haveChanges.value;
+        return;
+      }
+    }
     _userHabits.add(habit);
     _unCompletedHabits.add(habit);
+    haveChanges.value = !haveChanges.value;
   }
+
+  @override
+  // TODO: REMOVE KOSTYL
+  ValueNotifier get valueNotifier => haveChanges;
 }

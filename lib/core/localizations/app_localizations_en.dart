@@ -137,7 +137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get male => 'Male';
 
   @override
-  String get female => 'Demale';
+  String get female => 'Female';
 
   @override
   String get birthDate => 'Birthdate';
@@ -276,4 +276,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get complete => 'Complete';
+
+  @override
+  String get editHabit => 'Edit Habit';
 }

@@ -1,9 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
+import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/features/habits_check/domain/repositories/habit_repository_interface.dart';
 
 class HabitCard extends StatelessWidget {
   final bool isCompleted;
@@ -32,6 +36,12 @@ class HabitCard extends StatelessWidget {
           ),
           child: Center(
             child: ListTile(
+                onTap: () {
+                  GetIt.instance<HabitRepositoryInterface>()
+                      .selectCurrentHabit(id);
+                  context.pushNamed(AppRouteNames.editHabit,
+                      pathParameters: {'name': AppWords.of(context).editHabit});
+                },
                 leading: Text(
                   icon,
                   style: const TextStyle(
@@ -68,7 +78,10 @@ class HabitCard extends StatelessWidget {
             ),
           ),
         ),
-        onDismissed: (direction) => log('COMPLETED'),
+        onDismissed: (direction) {
+          GetIt.instance<HabitRepositoryInterface>().completeHabit(id);
+          log('COMPLETED');
+        },
         child: SizedBox(
           height: Adaptive.getHeight(90),
           width: double.infinity,
@@ -79,6 +92,12 @@ class HabitCard extends StatelessWidget {
             ),
             child: Center(
               child: ListTile(
+                onTap: () {
+                  GetIt.instance<HabitRepositoryInterface>()
+                      .selectCurrentHabit(id);
+                  context.pushNamed(AppRouteNames.editHabit,
+                      pathParameters: {'name': AppWords.of(context).editHabit});
+                },
                 leading: Text(
                   icon,
                   style: const TextStyle(

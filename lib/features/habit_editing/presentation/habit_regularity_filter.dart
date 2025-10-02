@@ -47,8 +47,8 @@ class HabitRegularityFilter extends StatelessWidget {
                                   : AppWords.of(context).oneTimeTask,
                               style: regularity == type
                                   ? context.appText.header4.copyWith(
-                                      color: const Color.fromRGBO(
-                                          255, 255, 255, 1))
+                                      color: Colors.white,
+                                    )
                                   : context.appText.header4,
                             ),
                           ),
@@ -61,7 +61,7 @@ class HabitRegularityFilter extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        selected: type == HabitRegularity.regularHabit,
+                        selected: regularity == HabitRegularity.regularHabit,
                         onSelected: (bool selected) {
                           if (selected) {
                             context.read<HabitEditingBloc>().add(

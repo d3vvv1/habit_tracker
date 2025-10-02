@@ -64,7 +64,13 @@ class _HabitColorPickerState extends State<HabitColorPicker> {
           builder: (context, state) {
             Color? selectedColor;
             if (state is ColorChnaged) {
-              colors[0] = state.color;
+              if (colors.contains(state.color)) {
+                colors.remove(state.color);
+                colors.insert(0, state.color);
+              } else {
+                colors[0] = state.color;
+              }
+              selectedColor = state.color;
             }
             return GridView.count(
               shrinkWrap: true,

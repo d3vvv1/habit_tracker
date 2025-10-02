@@ -1,5 +1,5 @@
 class EmojiList {
-  static const List<String> emojiList = [
+  static List<String> emojiList = [
     '🏃‍♂️', // Физические упражнения
     '🍏', // Здоровое питание
     '🍲', // Правильное питание

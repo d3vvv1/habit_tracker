@@ -42,7 +42,7 @@
     "fullName": "Full Name",
     "gender": "Gender",
     "male": "Male",
-    "female": "Demale",
+    "female": "Female",
     "birthDate": "Birthdate",
     "appAppearance": "App Appearance",
     "appLanguage": "App Language",
@@ -95,5 +95,6 @@
     "inCorrectPassword": "Incorrect password! Password should be at least 8 symbols",
     "inCorrectEmail": "Incorrect email! Try again",
     "completed": "Completed",
-    "complete": "Complete"
+    "complete": "Complete",
+    "editHabit": "Edit Habit"
 }

@@ -4,6 +4,7 @@ import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
+import 'package:habit_tracker/data/habit_basic_data.dart';
 import 'package:habit_tracker/features/habit_editing/presentation/habit_create_floating_button.dart';
 import 'package:habit_tracker/features/habits_check/domain/repositories/habit_repository_interface.dart';
 import 'package:habit_tracker/features/habits_check/view/habit_card.dart';
@@ -65,71 +66,75 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     );
                   } else {
-                    return ListView(
-                      children: [
-                        //TODO: Сделать фильтр Сегодня / Неделя / Месяц
-                        ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _habitRepository.unCompletedHabits.length,
-                          itemBuilder: (context, index) => HabitCard(
-                            id: _habitRepository.unCompletedHabits[index].id,
-                            name:
-                                _habitRepository.unCompletedHabits[index].name!,
-                            color: _habitRepository
-                                .unCompletedHabits[index].color!,
-                            icon:
-                                _habitRepository.unCompletedHabits[index].icon!,
-                            isCompleted: false,
-                          ),
-                          separatorBuilder: (context, index) => SizedBox(
-                            height: Adaptive.getHeight(10),
-                          ),
-                        ),
-                        SizedBox(
-                          height: Adaptive.getHeight(25),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              AppWords.of(context).completed,
-                              style: context.appText.header6
-                                  .copyWith(color: context.appColors.base4),
-                            ),
-                            SizedBox(
-                              width: Adaptive.getWidth(8),
-                            ),
-                            Expanded(
-                              child: ColoredBox(
-                                color: context.appColors.base4,
-                                child: SizedBox(
-                                  height: Adaptive.getByMin(0.5),
+                    List<HabitBasic> completedHabits =
+                        _habitRepository.completedHabits;
+                    List<HabitBasic> unCompletedHabits =
+                        _habitRepository.unCompletedHabits;
+                    return ValueListenableBuilder(
+                        valueListenable: _habitRepository.valueNotifier,
+                        builder: (context, value, child) {
+                          return ListView(
+                            children: [
+                              //TODO: Сделать фильтр Сегодня / Неделя / Месяц
+                              ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: unCompletedHabits.length,
+                                itemBuilder: (context, index) => HabitCard(
+                                  id: unCompletedHabits[index].id,
+                                  name: unCompletedHabits[index].name!,
+                                  color: unCompletedHabits[index].color!,
+                                  icon: unCompletedHabits[index].icon!,
+                                  isCompleted: false,
+                                ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                  height: Adaptive.getHeight(10),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: Adaptive.getHeight(20),
-                        ),
-                        ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _habitRepository.completedHabits.length,
-                          itemBuilder: (context, index) => HabitCard(
-                            id: _habitRepository.completedHabits[index].id,
-                            name: _habitRepository.completedHabits[index].name!,
-                            color:
-                                _habitRepository.completedHabits[index].color!,
-                            icon: _habitRepository.completedHabits[index].icon!,
-                            isCompleted: true,
-                          ),
-                          separatorBuilder: (context, index) => SizedBox(
-                            height: Adaptive.getHeight(15),
-                          ),
-                        ),
-                      ],
-                    );
+                              SizedBox(
+                                height: Adaptive.getHeight(25),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    AppWords.of(context).completed,
+                                    style: context.appText.header6.copyWith(
+                                        color: context.appColors.base4),
+                                  ),
+                                  SizedBox(
+                                    width: Adaptive.getWidth(8),
+                                  ),
+                                  Expanded(
+                                    child: ColoredBox(
+                                      color: context.appColors.base4,
+                                      child: SizedBox(
+                                        height: Adaptive.getByMin(0.5),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: Adaptive.getHeight(20),
+                              ),
+                              ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: completedHabits.length,
+                                itemBuilder: (context, index) => HabitCard(
+                                  id: completedHabits[index].id,
+                                  name: completedHabits[index].name!,
+                                  color: completedHabits[index].color!,
+                                  icon: completedHabits[index].icon!,
+                                  isCompleted: true,
+                                ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                  height: Adaptive.getHeight(15),
+                                ),
+                              ),
+                            ],
+                          );
+                        });
                   }
                 }
               }),

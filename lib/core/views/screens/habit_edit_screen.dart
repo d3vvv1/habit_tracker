@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/extensions/build_context_extension.dart';
+import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
 import 'package:habit_tracker/core/views/widgets/custom_back_button.dart';
@@ -26,6 +28,10 @@ class HabitCreationScreen extends StatelessWidget {
       create: (context) => HabitEditingBloc(),
       lazy: false,
       child: BlocListener<HabitEditingBloc, HabitEditingState>(
+        listenWhen: (previous, current) =>
+            current is ColorPickerOpened ||
+            current is EmojiPickerOpened ||
+            current is ChangesSaved,
         listener: (context, state) {
           if (state is ColorPickerOpened) {
             var bloc = context.read<HabitEditingBloc>();
@@ -44,6 +50,9 @@ class HabitCreationScreen extends StatelessWidget {
                 bloc: bloc,
               ),
             );
+          }
+          if (state is ChangesSaved) {
+            context.goNamed(AppRouteNames.home);
           }
         },
         child: Scaffold(

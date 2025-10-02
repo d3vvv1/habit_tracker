@@ -18,16 +18,18 @@ class ColorPickerDialog extends StatelessWidget {
           borderRadius: BorderRadiusGeometry.circular(16),
         ),
         child: SizedBox(
-          height: Adaptive.getHeight(300),
-          child: ColorPicker(
-            pickerColor: context.appColors.base4,
-            onColorChanged: (selectedColor) {
-              bloc.add(SetColor(color: selectedColor));
-            },
-            labelTypes: const [],
-            pickerAreaBorderRadius: BorderRadius.circular(8),
-            paletteType: PaletteType.hueWheel,
-            colorPickerWidth: Adaptive.getWidth(300),
+          height: Adaptive.getHeight(500),
+          child: Center(
+            child: ColorPicker(
+              pickerColor: context.appColors.base4,
+              onColorChanged: (selectedColor) {
+                bloc.add(SetColor(color: selectedColor));
+              },
+              labelTypes: const [],
+              pickerAreaBorderRadius: BorderRadius.circular(8),
+              paletteType: PaletteType.hueWheel,
+              colorPickerWidth: Adaptive.getWidth(300),
+            ),
           ),
         ));
   }
