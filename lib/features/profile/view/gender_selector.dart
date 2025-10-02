@@ -50,6 +50,7 @@ class _GenderSelectorState extends State<GenderSelector> {
                     borderRadius: BorderRadius.circular(8)),
                 child: DropdownMenu<Genders>(
                   initialSelection: selectedGender,
+                  textStyle: context.appText.header4,
                   trailingIcon: Icon(
                     Icons.keyboard_arrow_down,
                     color: context.appColors.base4,

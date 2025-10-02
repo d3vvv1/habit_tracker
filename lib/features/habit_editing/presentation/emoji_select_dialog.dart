@@ -16,7 +16,8 @@ class EmojiSelectDialog extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: context.appColors.base2,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16), topRight: Radius.circular(16)),
         ),
         child: Padding(
           padding: EdgeInsets.all(Adaptive.getHeight(20)),

@@ -20,6 +20,7 @@ class LogoutModalBottomSheet extends StatelessWidget {
           )),
       child: SizedBox(
         height: Adaptive.getHeight(250),
+        width: double.infinity,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: Adaptive.getWidth(25),

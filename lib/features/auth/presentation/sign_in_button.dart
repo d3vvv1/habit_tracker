@@ -25,7 +25,7 @@ class SignInButton extends StatelessWidget {
         child: Text(
           AppWords.of(context).signIn,
           style: context.appText.header4.copyWith(
-            color: context.appColors.base3,
+            color: Colors.white,
           ),
         ),
       ),

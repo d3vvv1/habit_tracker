@@ -12,17 +12,23 @@ class ColorPickerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: context.appColors.base3,
-      child: ColorPicker(
-        pickerColor: context.appColors.base4,
-        onColorChanged: (selectedColor) {
-          bloc.add(SetColor(color: selectedColor));
-        },
-        labelTypes: const [],
-        pickerAreaBorderRadius: BorderRadius.circular(8),
-        paletteType: PaletteType.hueWheel,
-        colorPickerWidth: Adaptive.getWidth(300),
-      ),
-    );
+        backgroundColor: context.appColors.base3,
+        alignment: Alignment.center,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(16),
+        ),
+        child: SizedBox(
+          height: Adaptive.getHeight(300),
+          child: ColorPicker(
+            pickerColor: context.appColors.base4,
+            onColorChanged: (selectedColor) {
+              bloc.add(SetColor(color: selectedColor));
+            },
+            labelTypes: const [],
+            pickerAreaBorderRadius: BorderRadius.circular(8),
+            paletteType: PaletteType.hueWheel,
+            colorPickerWidth: Adaptive.getWidth(300),
+          ),
+        ));
   }
 }

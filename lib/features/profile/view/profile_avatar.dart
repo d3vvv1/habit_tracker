@@ -25,6 +25,7 @@ class ProfileAvatar extends StatelessWidget {
           avatar = state.newAvatar;
         }
         return InkWell(
+          customBorder: const CircleBorder(),
           onTap: () => context.read<ProfileBloc>().add(ChangeAvatar()),
           child: CircleAvatar(
             backgroundColor: context.appColors.base3,

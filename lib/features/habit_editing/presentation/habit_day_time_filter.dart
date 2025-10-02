@@ -63,13 +63,9 @@ class _HabitDayTimeFilterState extends State<HabitDayTimeFilter> {
                           child: Text(
                             label,
                             style: dayTime == type
-                                ? Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                        color: const Color.fromRGBO(
-                                            255, 255, 255, 1))
-                                : Theme.of(context).textTheme.titleMedium,
+                                ? context.appText.header3
+                                    .copyWith(color: Colors.white)
+                                : context.appText.header3,
                           ),
                         ),
                       ),
