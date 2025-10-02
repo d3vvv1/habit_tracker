@@ -19,7 +19,7 @@ class ProfileAvatar extends StatelessWidget {
       builder: (context, state) {
         Uint8List? avatar;
         if (state is InitProfile) {
-          avatar = state.profile.avatar;
+          avatar = state.avatar;
         }
         if (state is AvatarChanged) {
           avatar = state.newAvatar;
@@ -37,7 +37,7 @@ class ProfileAvatar extends StatelessWidget {
                   : Icon(
                       Icons.camera_alt,
                       size: Adaptive.getHeight(70),
-                      color: Colors.white,
+                      color: context.appColors.base4,
                     ),
             ),
           ),

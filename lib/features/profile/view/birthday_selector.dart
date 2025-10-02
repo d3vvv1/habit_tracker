@@ -19,7 +19,7 @@ class BirthdaySelector extends StatelessWidget {
       builder: (context, state) {
         DateTime? selectedDate;
         if (state is InitProfile) {
-          selectedDate = state.profile.birthDate;
+          selectedDate = state.birthDate;
         }
         if (state is BirthDateChanged) {
           selectedDate = state.newBirthDate;

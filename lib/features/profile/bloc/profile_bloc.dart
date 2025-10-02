@@ -1,20 +1,41 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_event.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_state.dart';
 import 'package:habit_tracker/features/profile/domain/image_picker_manager.dart';
-import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
-import 'package:habit_tracker/features/profile/domain/profile_manager.dart';
+import 'package:habit_tracker/features/profile/domain/profile_use_case.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  // final ProfileInterface _manager = GetIt.instance<>();
-  final ProfileInterface _manager = ProfileManager();
-  ProfileBloc() : super(Test()) {
+  final ProfileUseCase _useCase = ProfileUseCase();
+  ProfileBloc() : super(InitalState()) {
+    on<Initialize>(_onInitialize);
     on<ChangeAvatar>(_onChangeAvatar);
     on<ChangeBirthDate>(_onChangeBirthDate);
     on<ChangeGender>(_onChangeGender);
     on<ChangeName>(_onChangeName);
     on<ChangeEmail>(_onChangeEmail);
+
+    add(Initialize());
+  }
+
+  Future<void> _onInitialize(
+    Initialize event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(Loading());
+    bool res = await _useCase.getAvatar();
+    log('Avatar load success? - $res');
+    emit(
+      InitProfile(
+        fullName: _useCase.name,
+        gender: _useCase.gender,
+        birthDate: _useCase.birthDate,
+        avatar: _useCase.avatar,
+        email: _useCase.email,
+      ),
+    );
   }
 
   Future<void> _onChangeAvatar(
@@ -24,42 +45,46 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     XFile? res = await ImagePickerManager.pickImageFromGallery();
     if (res != null) {
       var bytes = await res.readAsBytes();
-      _manager.setAvatar(bytes);
+      _useCase.setAvatar(bytes);
       emit(AvatarChanged(newAvatar: bytes));
     }
-
-    emit(AvatarChanged(newAvatar: _manager.avatar));
   }
 
   Future<void> _onChangeName(
     ChangeName event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.setName(event.newName);
-    emit(NameChanged(newName: _manager.name));
+    _useCase.setName(event.newName);
+    if (_useCase.name != null) {
+      emit(NameChanged(newName: _useCase.name!));
+    }
   }
 
   Future<void> _onChangeGender(
     ChangeGender event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.setGender(event.newGender);
-    emit(GenderChanged(newGender: _manager.gender));
+    _useCase.setGender(event.newGender);
+    if (_useCase.gender != null) {
+      emit(GenderChanged(newGender: _useCase.gender!));
+    }
   }
 
   Future<void> _onChangeBirthDate(
     ChangeBirthDate event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.setBirthday(event.newBirthDate);
-    emit(BirthDateChanged(newBirthDate: _manager.birthDate));
+    _useCase.setBirthday(event.newBirthDate);
+    if (_useCase.birthDate != null) {
+      emit(BirthDateChanged(newBirthDate: _useCase.birthDate!));
+    }
   }
 
   Future<void> _onChangeEmail(
     ChangeEmail event,
     Emitter<ProfileState> emit,
   ) async {
-    _manager.setEmail(event.newEmail);
-    emit(EmailChanged(newEmail: _manager.email));
+    _useCase.setEmail(event.newEmail);
+    emit(EmailChanged(newEmail: _useCase.email));
   }
 }

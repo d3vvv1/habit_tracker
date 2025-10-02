@@ -2,6 +2,8 @@ import 'package:habit_tracker/data/enums.dart';
 
 sealed class ProfileEvent {}
 
+class Initialize extends ProfileEvent {}
+
 class ChangeEmail extends ProfileEvent {
   final String newEmail;
 

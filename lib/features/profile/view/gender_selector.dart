@@ -25,7 +25,7 @@ class _GenderSelectorState extends State<GenderSelector> {
       builder: (context, state) {
         Genders? selectedGender;
         if (state is InitProfile) {
-          selectedGender = state.profile.gender;
+          selectedGender = state.gender;
         }
         if (state is GenderChanged) {
           selectedGender = state.newGender;

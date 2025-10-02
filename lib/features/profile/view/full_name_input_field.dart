@@ -45,7 +45,7 @@ class _FullNameInputFieldState extends State<FullNameInputField> {
           (current is InitProfile || current is NameChanged),
       builder: (context, state) {
         if (state is InitProfile) {
-          _nameController.text = state.profile.fullName ?? '';
+          _nameController.text = state.fullName ?? '';
         }
         if (state is NameChanged) {
           _nameController.text = state.newName;

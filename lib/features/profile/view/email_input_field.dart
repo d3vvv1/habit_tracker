@@ -46,7 +46,7 @@ class _EmailInputFieldState extends State<EmailInputField> {
           (current is InitProfile || current is EmailChanged),
       builder: (context, state) {
         if (state is InitProfile) {
-          _emailController.text = state.profile.email;
+          _emailController.text = state.email;
         }
         if (state is EmailChanged) {
           _emailController.text = state.newEmail;
