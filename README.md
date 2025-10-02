@@ -14,8 +14,9 @@
 Страница редактирования привычки:
 ![Screenshot_20251002_194120](https://github.com/user-attachments/assets/36202f3e-11e1-4f86-b839-c59155158ef2)
 ![Screenshot_20251002_194040](https://github.com/user-attachments/assets/b2215518-00c2-4bab-b48d-b40aab1aa72e)
+
 ![Screenshot_20251002_194049](https://github.com/user-attachments/assets/4c20d1a5-2b14-44da-9858-01aec349ad37)
-![Screenshot_20251002_194032](https://github.com/user-attachments/assets/691be74d-9c0b-4d5f-b989-437a11927132)
+![Screenshot_20251002_194120](https://github.com/user-attachments/assets/bfa6a454-9695-45b4-8bed-4244cb8740d1)
 ![Screenshot_20251002_194126](https://github.com/user-attachments/assets/93709686-157e-49b8-98ad-aa1bb0c061df)
 Аутентификация:
 ![Screenshot_20251002_194134](https://github.com/user-attachments/assets/e3f6f447-ef1d-4a3d-a55b-57ea6b5c928a)
