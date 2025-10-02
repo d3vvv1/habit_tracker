@@ -21,7 +21,7 @@ class LanguageSelectListTile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            Provider.of<LocaleProvider>(context).locale == Locale('en')
+            Provider.of<LocaleProvider>(context).locale == const Locale('en')
                 ? AppWords.of(context).english
                 : AppWords.of(context).russian,
             style: context.appText.header4,

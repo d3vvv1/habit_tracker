@@ -194,6 +194,12 @@ abstract class AppLocalizations {
   /// **'Иконка'**
   String get icon;
 
+  /// No description provided for @viewAll.
+  ///
+  /// In ru, this message translates to:
+  /// **'Посмотреть все'**
+  String get viewAll;
+
   /// No description provided for @color.
   ///
   /// In ru, this message translates to:
@@ -607,6 +613,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Неправильный email! Попробуйте еще раз'**
   String get inCorrectEmail;
+
+  /// No description provided for @completed.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выполнено'**
+  String get completed;
+
+  /// No description provided for @complete.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выполнить'**
+  String get complete;
 }
 
 class _AppLocalizationsDelegate

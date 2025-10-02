@@ -4,7 +4,7 @@ import 'package:habit_tracker/core/routing/app_route_names.dart';
 import 'package:habit_tracker/core/views/screens/account_screen.dart';
 import 'package:habit_tracker/core/views/screens/app_appearance_screen.dart';
 import 'package:habit_tracker/core/views/screens/auth_screen.dart';
-import 'package:habit_tracker/core/views/screens/habit_creation_screen.dart';
+import 'package:habit_tracker/core/views/screens/habit_edit_screen.dart';
 import 'package:habit_tracker/core/views/screens/home_screen.dart';
 import 'package:habit_tracker/core/views/screens/profile_screen.dart';
 import 'package:habit_tracker/core/views/screens/root_screen.dart';
@@ -60,22 +60,15 @@ final router = GoRouter(
                 builder: (context, state) => const HomeScreen(),
                 routes: [
                   GoRoute(
-                    path: '/createHabit',
+                    path: '/createHabit/:name',
                     name: AppRouteNames.createHabit,
-                    builder: (context, state) => const HabitCreationScreen(),
+                    builder: (context, state) => HabitCreationScreen(
+                      name: state.pathParameters['name'] ?? '',
+                    ),
                   ),
                 ]),
           ],
         ),
-        // StatefulShellBranch(
-        //   routes: [
-        //     GoRoute(
-        //       path: '/auth',
-        //       name: AppRouteNames.auth,
-        //       builder: (context, state) => const AuthScreen(),
-        //     ),
-        //   ],
-        // ),
         StatefulShellBranch(
           routes: [
             GoRoute(

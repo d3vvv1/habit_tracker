@@ -28,13 +28,23 @@ enum HabitRegularity {
   oneTimeTask,
 }
 
-enum HabitRepetition {
+enum HabitRepeat {
   daily,
   weekly,
   monthly,
 }
 
-enum RunTime {
+enum DayNames {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}
+
+enum RunDayTime {
   morning,
   afternoon,
   evening,

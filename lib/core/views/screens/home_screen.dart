@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:habit_tracker/core/extensions/build_context_extension.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
 import 'package:habit_tracker/core/views/widgets/custom_app_bar.dart';
-import 'package:habit_tracker/features/habit_creation/presentation/habit_create_floating_button.dart';
-import 'package:habit_tracker/features/habits_check/data/habits_mockdata.dart';
+import 'package:habit_tracker/features/habit_editing/presentation/habit_create_floating_button.dart';
+import 'package:habit_tracker/features/habits_check/domain/repositories/habit_repository_interface.dart';
 import 'package:habit_tracker/features/habits_check/view/habit_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HabitsMockdata data = HabitsMockdata();
+  final HabitRepositoryInterface _habitRepository =
+      GetIt.instance<HabitRepositoryInterface>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,66 +38,101 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(
             horizontal: Adaptive.getWidth(20),
           ),
-          child: ListView(
-            children: [
-              //TODD: Сделать фильтр Сегодня / Неделя / Месяц
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: data.unCompletedHabits.length,
-                itemBuilder: (context, index) => HabitCard(
-                  id: index,
-                  name: data.unCompletedHabits[index].name,
-                  color: data.unCompletedHabits[index].color,
-                  icon: data.unCompletedHabits[index].icon,
-                ),
-                separatorBuilder: (context, index) => SizedBox(
-                  height: Adaptive.getHeight(10),
-                ),
-              ),
-              SizedBox(
-                height: Adaptive.getHeight(25),
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Completed',
-                    // AppWords.of(context).completed,
-                    style: context.appText.header6
-                        .copyWith(color: context.appColors.base4),
-                  ),
-                  SizedBox(
-                    width: Adaptive.getWidth(8),
-                  ),
-                  Expanded(
-                    child: ColoredBox(
-                      color: context.appColors.base4,
-                      child: SizedBox(
-                        height: Adaptive.getByMin(0.5),
-                      ),
+          child: FutureBuilder(
+              future: _habitRepository.init(),
+              builder: (context, asyncSnapshot) {
+                if (asyncSnapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: context.appColors.base3,
+                      color: context.appColors.base1,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: Adaptive.getHeight(20),
-              ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: data.completedHabits.length,
-                itemBuilder: (context, index) => HabitCard(
-                  id: null,
-                  name: data.completedHabits[index].name,
-                  color: data.completedHabits[index].color,
-                  icon: data.completedHabits[index].icon,
-                ),
-                separatorBuilder: (context, index) => SizedBox(
-                  height: Adaptive.getHeight(15),
-                ),
-              ),
-            ],
-          ),
+                  );
+                } else {
+                  if (asyncSnapshot.hasError) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          AppWords.of(context).error,
+                          style: context.appText.header1
+                              .copyWith(color: Colors.red),
+                        ),
+                        Text(
+                          asyncSnapshot.error.toString(),
+                          style: context.appText.header4,
+                        ),
+                      ],
+                    );
+                  } else {
+                    return ListView(
+                      children: [
+                        //TODO: Сделать фильтр Сегодня / Неделя / Месяц
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: _habitRepository.unCompletedHabits.length,
+                          itemBuilder: (context, index) => HabitCard(
+                            id: _habitRepository.unCompletedHabits[index].id,
+                            name:
+                                _habitRepository.unCompletedHabits[index].name!,
+                            color: _habitRepository
+                                .unCompletedHabits[index].color!,
+                            icon:
+                                _habitRepository.unCompletedHabits[index].icon!,
+                            isCompleted: false,
+                          ),
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: Adaptive.getHeight(10),
+                          ),
+                        ),
+                        SizedBox(
+                          height: Adaptive.getHeight(25),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              AppWords.of(context).completed,
+                              style: context.appText.header6
+                                  .copyWith(color: context.appColors.base4),
+                            ),
+                            SizedBox(
+                              width: Adaptive.getWidth(8),
+                            ),
+                            Expanded(
+                              child: ColoredBox(
+                                color: context.appColors.base4,
+                                child: SizedBox(
+                                  height: Adaptive.getByMin(0.5),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: Adaptive.getHeight(20),
+                        ),
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: _habitRepository.completedHabits.length,
+                          itemBuilder: (context, index) => HabitCard(
+                            id: _habitRepository.completedHabits[index].id,
+                            name: _habitRepository.completedHabits[index].name!,
+                            color:
+                                _habitRepository.completedHabits[index].color!,
+                            icon: _habitRepository.completedHabits[index].icon!,
+                            isCompleted: true,
+                          ),
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: Adaptive.getHeight(15),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                }
+              }),
         ));
   }
 }

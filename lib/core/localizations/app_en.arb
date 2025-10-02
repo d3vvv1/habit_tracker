@@ -15,6 +15,7 @@
     "habitName": "Habit name",
     "studyArt": "Study art",
     "icon": "Icon",
+    "viewAll": "View all",
     "color": "Color",
     "repeat": "Repeat",
     "daily": "Daily",
@@ -92,5 +93,7 @@
     "forgotPassword": "Forgot Password?",
     "error": "Error!",
     "inCorrectPassword": "Incorrect password! Password should be at least 8 symbols",
-    "inCorrectEmail": "Incorrect email! Try again"
+    "inCorrectEmail": "Incorrect email! Try again",
+    "completed": "Completed",
+    "complete": "Complete"
 }

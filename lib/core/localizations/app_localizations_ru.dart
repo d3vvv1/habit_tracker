@@ -57,6 +57,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get icon => 'Иконка';
 
   @override
+  String get viewAll => 'Посмотреть все';
+
+  @override
   String get color => 'Цвет';
 
   @override
@@ -268,4 +271,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get inCorrectEmail => 'Неправильный email! Попробуйте еще раз';
+
+  @override
+  String get completed => 'Выполнено';
+
+  @override
+  String get complete => 'Выполнить';
 }

@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:habit_tracker/data/enums.dart';
 
 sealed class ProfileEvent {}
