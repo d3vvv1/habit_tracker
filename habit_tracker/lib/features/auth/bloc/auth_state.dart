@@ -2,9 +2,9 @@ sealed class AuthState {}
 
 class InitialState extends AuthState {}
 
-class InCorrectEmail extends AuthState {}
+// class InCorrectEmail extends AuthState {}
 
-class InCorrectPassword extends AuthState {}
+// class InCorrectPassword extends AuthState {}
 
 class SuccessLogin extends AuthState {}
 

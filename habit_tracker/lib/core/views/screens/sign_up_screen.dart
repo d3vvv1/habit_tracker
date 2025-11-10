@@ -35,11 +35,7 @@ class SignUpScreen extends StatelessWidget {
               context: context,
               builder: (context) {
                 String errorText = '';
-                if (state is InCorrectEmail) {
-                  errorText = AppWords.of(context).inCorrectEmail;
-                } else if (state is InCorrectPassword) {
-                  errorText = AppWords.of(context).inCorrectPassword;
-                } else if (state is AuthError) {
+                if (state is AuthError) {
                   errorText = state.errorText;
                 }
                 return ErrorModalBottomSheet(errorText: errorText);

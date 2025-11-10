@@ -1,11 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/services/auth/auth_service.dart';
+import 'package:habit_tracker/core/services/auth/auth_validator.dart';
+import 'package:habit_tracker/core/services/auth/network_servise.dart';
 import 'package:habit_tracker/features/auth/bloc/auth_event.dart';
 import 'package:habit_tracker/features/auth/bloc/auth_state.dart';
 import 'package:habit_tracker/features/auth/data/basic_user_data.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthService _authService;
+  final NetworkService _networkService = NetworkService();
   BasicUserData? _user;
 
   AuthBloc({required AuthService authService})
@@ -21,13 +24,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     EnterEmail event,
     Emitter<AuthState> emit,
   ) async {
-    if (event.email.isEmpty || !event.email.contains('@')) {
+    try {
+      bool res = AuthValidator.validateEmail(event.email);
+      if (res) {
+        _user = _user?.copyWith(email: event.email) ??
+            BasicUserData(email: event.email, password: '');
+      }
+    } catch (e) {
       emit(
-        InCorrectEmail(),
+        AuthError(
+          errorText: e.toString().split(':').last,
+        ),
       );
-    } else {
-      _user = _user?.copyWith(email: event.email) ??
-          BasicUserData(email: event.email, password: '');
     }
   }
 
@@ -35,13 +43,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     EnterPassword event,
     Emitter<AuthState> emit,
   ) async {
-    if (event.password.isEmpty || event.password.trim().length < 8) {
+    try {
+      bool res = AuthValidator.validatePassword(event.password);
+      if (res) {
+        _user = _user?.copyWith(password: event.password) ??
+            BasicUserData(email: '', password: event.password);
+      }
+    } catch (e) {
       emit(
-        InCorrectPassword(),
+        AuthError(
+          errorText: e.toString().split(':').last,
+        ),
       );
-    } else {
-      _user = _user?.copyWith(password: event.password) ??
-          BasicUserData(email: '', password: event.password);
     }
   }
 
@@ -50,21 +63,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     if (_user != null) {
-      if (_user!.email.isEmpty) {
-        emit(InCorrectEmail());
-        return;
-      } else if (_user!.password.isEmpty) {
-        emit(InCorrectPassword());
-        return;
-      } else {
-        try {
-          bool res = await _authService.login(_user!);
+      try {
+        bool correctEmail = AuthValidator.validateEmail(_user!.email);
+        bool correctPassword = AuthValidator.validatePassword(_user!.password);
+        if (correctPassword & correctEmail) {
+          bool res = await _networkService
+              .executeWithRetry(() => _authService.login(_user!));
           if (res) {
             emit(SuccessLogin());
           }
-        } catch (e) {
-          emit(AuthError(errorText: e.toString()));
         }
+      } catch (e) {
+        emit(
+          AuthError(
+            errorText: e.toString().split(':').last,
+          ),
+        );
       }
     }
   }
@@ -74,21 +88,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     if (_user != null) {
-      if (_user!.email.isEmpty) {
-        emit(InCorrectEmail());
-        return;
-      } else if (_user!.password.isEmpty) {
-        emit(InCorrectPassword());
-        return;
-      } else {
-        try {
-          bool res = await _authService.signUp(_user!);
+      try {
+        bool correctEmail = AuthValidator.validateEmail(_user!.email);
+        bool correctPassword = AuthValidator.validatePassword(_user!.password);
+        if (correctPassword & correctEmail) {
+          bool res = await _networkService
+              .executeWithRetry(() => _authService.signUp(_user!));
           if (res) {
             emit(SuccessLogin());
           }
-        } catch (e) {
-          emit(AuthError(errorText: e.toString()));
         }
+      } catch (e) {
+        emit(
+          AuthError(
+            errorText: e.toString().split(':').last,
+          ),
+        );
       }
     }
   }
