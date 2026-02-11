@@ -13,6 +13,10 @@ class AppConfigData {
     required this.localeCode,
   });
 
+  AppConfigData.byDefault()
+      : themeMode = ThemeMode.system,
+        localeCode = 'en';
+
   AppConfigData copyWith({
     ThemeMode? themeMode,
     String? localeCode,

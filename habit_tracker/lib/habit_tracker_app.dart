@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:habit_tracker/core/localizations/app_words.dart';
 import 'package:habit_tracker/core/routing/go_router.dart';
 import 'package:habit_tracker/core/services/auth/auth_service.dart';
@@ -6,6 +7,7 @@ import 'package:habit_tracker/core/services/auth/auth_service_firebase.dart';
 import 'package:habit_tracker/core/theme/app_dark_theme.dart';
 import 'package:habit_tracker/core/theme/app_light_theme.dart';
 import 'package:habit_tracker/core/utils/adaptive_val.dart';
+import 'package:habit_tracker/features/app_settings/domain/app_settings_irepository.dart';
 import 'package:habit_tracker/features/app_settings/provider/locale_provider.dart';
 import 'package:habit_tracker/features/app_settings/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -40,11 +42,15 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => ThemeProvider(),
+            create: (context) => ThemeProvider(
+              appSettingsRepository: GetIt.instance<IAppSettingsRepository>(),
+            )..init(),
             lazy: false,
           ),
           ChangeNotifierProvider(
-            create: (context) => LocaleProvider(),
+            create: (context) => LocaleProvider(
+              appSettingsRepository: GetIt.instance<IAppSettingsRepository>(),
+            )..init(),
             lazy: false,
           ),
         ],

@@ -29,8 +29,8 @@ class LocalStorageHive implements LocalStorageService {
     final box = await Hive.openBox(_configBox);
     final data = box.get('appConfig');
     if (data != null) {
-      // ╨Я╤А╨╡╨╛╨▒╤А╨░╨╖╨╛╨▓╨░╤В╤М ╨┤╨░╨╜╨╜╤Л╨╡ ╨╛╨▒╤А╨░╤В╨╜╨╛ ╨▓ UserProfile
-      return AppConfigData.fromMap(data);
+      Map<String, dynamic> convertedData = Map<String, dynamic>.from(data);
+      return AppConfigData.fromMap(convertedData);
     }
     return null;
   }
