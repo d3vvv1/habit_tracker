@@ -34,7 +34,7 @@ class AccountScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           child: SizedBox(
-            height: Adaptive.getHeight(800),
+            height: Adaptive.getHeight(790),
             child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Adaptive.getWidth(15),
