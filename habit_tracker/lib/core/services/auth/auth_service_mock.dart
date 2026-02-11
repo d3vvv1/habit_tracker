@@ -1,5 +1,4 @@
 import 'package:habit_tracker/core/services/auth/auth_service.dart';
-import 'package:habit_tracker/features/auth/data/basic_user_data.dart';
 
 class AuthServiceMock implements AuthService {
   @override
@@ -9,7 +8,7 @@ class AuthServiceMock implements AuthService {
   }
 
   @override
-  Future<bool> login(BasicUserData user) async {
+  Future<bool> login(String userEmail, String userPassword) async {
     await Future.delayed(const Duration(seconds: 1));
     return true;
   }
@@ -20,7 +19,7 @@ class AuthServiceMock implements AuthService {
   }
 
   @override
-  Future<bool> signUp(BasicUserData user) async {
+  Future<bool> signUp(String userEmail, String userPassword) async {
     await Future.delayed(const Duration(seconds: 1));
     return true;
   }

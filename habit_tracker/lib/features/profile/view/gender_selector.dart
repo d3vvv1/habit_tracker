@@ -48,39 +48,46 @@ class _GenderSelectorState extends State<GenderSelector> {
                 decoration: BoxDecoration(
                     color: context.appColors.base3,
                     borderRadius: BorderRadius.circular(8)),
-                child: DropdownMenu<Genders>(
-                  initialSelection: selectedGender,
-                  textStyle: context.appText.header4,
-                  trailingIcon: Icon(
-                    Icons.keyboard_arrow_down,
-                    color: context.appColors.base4,
-                  ),
-                  width: double.infinity,
-                  inputDecorationTheme: InputDecorationTheme(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: Adaptive.getWidth(20),
+                child: Center(
+                  child: DropdownMenu<Genders>(
+                    initialSelection: selectedGender,
+                    textStyle: context.appText.header4,
+                    trailingIcon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: context.appColors.base4,
                     ),
-                  ),
-                  menuStyle: MenuStyle(
+                    width: double.infinity,
+                    inputDecorationTheme: InputDecorationTheme(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: Adaptive.getWidth(20),
+                      ),
+                    ),
+                    menuStyle: MenuStyle(
                       backgroundColor:
-                          WidgetStatePropertyAll(context.appColors.base3)),
-                  onSelected: (Genders? value) {
-                    bloc.add(ChangeGender(newGender: value!));
-                  },
-                  dropdownMenuEntries: Genders.values.map((Genders gender) {
-                    String label = '';
-                    switch (gender) {
-                      case Genders.male:
-                        label = AppWords.of(context).male;
-                      case Genders.female:
-                        label = AppWords.of(context).female;
-                    }
-                    return DropdownMenuEntry<Genders>(
-                      value: gender,
-                      label: label,
-                    );
-                  }).toList(),
+                          WidgetStatePropertyAll(context.appColors.base3),
+                    ),
+                    onSelected: (Genders? value) {
+                      bloc.add(ChangeGender(newGender: value!));
+                    },
+                    dropdownMenuEntries: Genders.values.map((Genders gender) {
+                      String label = '';
+                      switch (gender) {
+                        case Genders.male:
+                          label = AppWords.of(context).male;
+                        case Genders.female:
+                          label = AppWords.of(context).female;
+                      }
+                      return DropdownMenuEntry<Genders>(
+                        value: gender,
+                        label: label,
+                        style: MenuItemButton.styleFrom(
+                          foregroundColor: context.appColors.base4,
+                          textStyle: context.appText.header4,
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
             ),

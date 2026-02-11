@@ -28,18 +28,23 @@ class AppAppearanceScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: Adaptive.getWidth(10),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: Adaptive.getHeight(20),
-            ),
-            const ThemeSelectListTile(),
-            SizedBox(
-              height: Adaptive.getHeight(10),
-            ),
-            const LanguageSelectListTile(),
-          ],
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: context.appColors.base6,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: Adaptive.getHeight(20),
+              ),
+              const ThemeSelectListTile(),
+              SizedBox(
+                height: Adaptive.getHeight(10),
+              ),
+              const LanguageSelectListTile(),
+            ],
+          ),
         ),
       ),
     );

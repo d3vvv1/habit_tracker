@@ -6,7 +6,6 @@ class MockProfile extends ProfileData {
       : super(
           fullName: 'Ruslan Salakhov',
           email: 'yaRuslan@mail.com',
-          password: '1234567890',
           birthDate: DateTime.now(),
           gender: Genders.male,
           avatar: null,

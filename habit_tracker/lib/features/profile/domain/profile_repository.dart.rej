@@ -1,0 +1,117 @@
+diff a/habit_tracker/lib/features/profile/domain/profile_repository.dart b/habit_tracker/lib/features/profile/domain/profile_repository.dart	(rejected hunks)
+@@ -1,65 +1,63 @@
++import 'package:cloud_firestore/cloud_firestore.dart';
++import 'package:firebase_auth/firebase_auth.dart';
+ import 'package:habit_tracker/features/profile/data/profile_data.dart';
+ import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
+ 
+ class ProfileRepository implements ProfileRepositoryInterface {
+-  ProfileData? _profileData;
++  late ProfileData _profileData;
++  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
++  final FirebaseAuth _auth = FirebaseAuth.instance;
+ 
+-  // @override
+-  // Future<bool> setBirthday(DateTime date) async {
+-  //   _profileData = _profileData!.copyWith(birthDate: date);
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╖╨░╨┐╨╕╤Б╤М ╨▓ json ╨╕ ╨╗╨╛╨║╨░╨╗╤М╨╜╨╛╨╡ ╤Е╤А╨░╨╜╨╕╨╗╨╕╤Й╨╡
+-  //   return true;
+-  // }
+-
+-  // @override
+-  // Future<bool> setEmail(String newEmail) async {
+-  //   _profileData = _profileData!.copyWith(email: newEmail);
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╛╨▒╨╜╨╛╨▓╨╗╨╡╨╜╨╕╨╡ ╨▓ ╤Д╨░╨╣╨╡╤А╨▒╨╡╨╣╤Б
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╖╨░╨┐╨╕╤Б╤М ╨▓ json ╨╕ ╨╗╨╛╨║╨░╨╗╤М╨╜╨╛╨╡ ╤Е╤А╨░╨╜╨╕╨╗╨╕╤Й╨╡
+-  //   return true;
+-  // }
+-
+-  // @override
+-  // Future<bool> setGender(Genders gender) async {
+-  //   _profileData = _profileData!.copyWith(gender: gender);
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╖╨░╨┐╨╕╤Б╤М ╨▓ json ╨╕ ╨╗╨╛╨║╨░╨╗╤М╨╜╨╛╨╡ ╤Е╤А╨░╨╜╨╕╨╗╨╕╤Й╨╡
+-  //   return true;
+-  // }
+-
+-  // @override
+-  // Future<bool> setName(String newName) async {
+-  //   _profileData = _profileData!.copyWith(fullName: name);
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╖╨░╨┐╨╕╤Б╤М ╨▓ json ╨╕ ╨╗╨╛╨║╨░╨╗╤М╨╜╨╛╨╡ ╤Е╤А╨░╨╜╨╕╨╗╨╕╤Й╨╡
+-  //   return true;
+-  // }
+-
+-  // @override
+-  // Future<bool> setAvatar(Uint8List image) async {
+-  //   _profileData = _profileData!.copyWith(avatar: image);
+-  //   //TODO: ╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М ╨╖╨░╨┐╨╕╤Б╤М ╨▓ json ╨╕ ╨╗╨╛╨║╨░╨╗╤М╨╜╨╛╨╡ ╤Е╤А╨░╨╜╨╕╨╗╨╕╤Й╨╡
+-  //   return true;
+-  // }
+-
+-  // @override
+-  // Uint8List get avatar => _profileData!.avatar!;
+-
+-  // @override
+-  // DateTime get birthDate => _profileData!.birthDate!;
+-
+-  // @override
+-  // String get email => _profileData!.email;
++  @override
++  Future<void> initLocalData() {
++    // TODO: implement initLocalData
++    throw UnimplementedError();
++  }
+ 
+-  // @override
+-  // Genders get gender => _profileData!.gender!;
++  @override
++  Future<void> updateProfileData(Map<String, dynamic> updates) async {
++    final user = _auth.currentUser;
++    if (user == null) throw Exception('╨Я╨╛╨╗╤М╨╖╨╛╨▓╨░╤В╨╡╨╗╤М ╨╜╨╡ ╨░╨▓╤В╨╛╤А╨╕╨╖╨╛╨▓╨░╨╜');
+ 
+-  // @override
+-  // String get name => _profileData!.fullName!;
++    await _firestore.collection('users').doc(user.uid).update(updates);
++  }
+ 
+   @override
+-  Future<void> init() async {
+-    //TODO: ╨а╨╡╨░╨╗╨╕╨╖╨╛╨▓╨░╤В╤М ╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╖╨╕╨░╤Ж╨╕╤О ╨┐╤А╨╛╤Д╨╕╨╗╤П
++  Future<void> createUserProfile(User user) async {
++    print('USER - $user');
++    final newUserProfile = ProfileData(
++      email: user.email!,
++      fullName: null,
++      gender: null,
++      birthDate: null,
++      avatar: null,
++    );
++
++    try {
++      await _firestore
++          .collection('users')
++          .doc(user.uid)
++          .set(newUserProfile.toMap());
++    } catch (e) {
++      print('Error trying create new user - $e');
++    }
+   }
+ 
+   @override
+-  ProfileData get profile => _profileData!;
++  Stream<ProfileData> getCurrentProfile() {
++    final user = _auth.currentUser;
++    if (user == null) {
++      throw Exception('╨Я╨╛╨╗╤М╨╖╨╛╨▓╨░╤В╨╡╨╗╤М ╨╜╨╡ ╨░╨▓╤В╨╛╤А╨╕╨╖╨╛╨▓╨░╨╜');
++    }
++
++    return _firestore
++        .collection('users')
++        .doc(user.uid)
++        .snapshots()
++        .map((snapshot) {
++      _profileData =
++          ProfileData.fromMap(snapshot.data() as Map<String, dynamic>);
++      return _profileData;
++    });
++  }
+ }

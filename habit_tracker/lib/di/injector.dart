@@ -5,6 +5,7 @@ import 'package:habit_tracker/features/habits_check/domain/repositories/habit_re
 import 'package:habit_tracker/features/habits_check/domain/repositories/habit_repository_mock.dart';
 import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
 import 'package:habit_tracker/features/profile/domain/profile_mock_repository.dart';
+import 'package:habit_tracker/features/profile/domain/profile_repository.dart';
 
 void setupDependencies() {
   final getIt = GetIt.instance;
@@ -18,6 +19,6 @@ void setupDependencies() {
   );
 
   getIt.registerSingleton<ProfileRepositoryInterface>(
-    ProfileMockRepository(),
+    ProfileRepository(),
   );
 }

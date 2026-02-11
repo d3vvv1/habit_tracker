@@ -13,13 +13,19 @@ class LogoutListTile extends StatelessWidget {
       horizontalTitleGap: Adaptive.getWidth(20),
       leading: SizedBox(
           height: Adaptive.getHeight(40),
-          child: const Icon(
-            Icons.logout,
-            color: Colors.red,
+          child: const FittedBox(
+            fit: BoxFit.fill,
+            child: Icon(
+              Icons.logout,
+              color: Colors.red,
+            ),
           )),
       title: Text(
         AppWords.of(context).logout,
-        style: context.appText.header4.copyWith(color: Colors.red),
+        style: context.appText.header3.copyWith(
+          color: Colors.red,
+          fontWeight: FontWeight.w800,
+        ),
       ),
       onTap: () => showModalBottomSheet(
           context: context,

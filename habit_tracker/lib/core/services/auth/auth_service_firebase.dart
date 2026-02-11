@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:habit_tracker/core/services/auth/auth_service.dart';
-import 'package:habit_tracker/features/auth/data/basic_user_data.dart';
+import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
 
 class AuthServiceFirebase implements AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -14,10 +15,10 @@ class AuthServiceFirebase implements AuthService {
   }
 
   @override
-  Future<bool> login(BasicUserData user) async {
+  Future<bool> login(String userEmail, String userPassword) async {
     final result = await _firebaseAuth.signInWithEmailAndPassword(
-      email: user.email,
-      password: user.password,
+      email: userEmail,
+      password: userPassword,
     );
     return result.user != null;
   }
@@ -28,9 +29,13 @@ class AuthServiceFirebase implements AuthService {
   }
 
   @override
-  Future<bool> signUp(BasicUserData user) async {
+  Future<bool> signUp(String userEmail, String userPassword) async {
     final result = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: user.email, password: user.password);
+        email: userEmail, password: userPassword);
+    if (result.user != null) {
+      GetIt.instance<ProfileRepositoryInterface>()
+          .createUserProfile(result.user!); //TODO: ╨б╨┤╨╡╨╗╨░╤В╤М ╨┐╨╛╨╗╤Г╤З╤И╨╡
+    }
     return result.user != null;
   }
 }

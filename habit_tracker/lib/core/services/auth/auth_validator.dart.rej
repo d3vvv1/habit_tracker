@@ -1,0 +1,19 @@
+diff a/habit_tracker/lib/core/services/auth/auth_validator.dart b/habit_tracker/lib/core/services/auth/auth_validator.dart	(rejected hunks)
+@@ -3,12 +3,12 @@ class AuthValidator {
+   // static const emailRegex = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+ 
+   static bool validateEmail(String email) {
+-    final emailRegex = RegExp(
+-        r'^[a-zA-Z0-9.!#$%&тАЩ*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
++    // final emailRegex = RegExp(
++    //     r'^[a-zA-Z0-9.!#$%&тАЩ*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
+ 
+-    if (!emailRegex.hasMatch(email)) {
+-      throw Exception('╨Э╨╡╨▓╨╡╤А╨╜╤Л╨╣ ╤Д╨╛╤А╨╝╨░╤В ╤Н╨╗╨╡╨║╤В╤А╨╛╨╜╨╜╨╛╨╣ ╨┐╨╛╤З╤В╤Л.');
+-    }
++    // if (!emailRegex.hasMatch(email)) {
++    //   throw Exception('╨Э╨╡╨▓╨╡╤А╨╜╤Л╨╣ ╤Д╨╛╤А╨╝╨░╤В ╤Н╨╗╨╡╨║╤В╤А╨╛╨╜╨╜╨╛╨╣ ╨┐╨╛╤З╤В╤Л.');
++    // }
+ 
+     return true;
+   }

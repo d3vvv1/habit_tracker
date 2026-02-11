@@ -17,7 +17,7 @@ class AccountScreen extends StatelessWidget {
         backButton: null,
         title: Text(
           AppWords.of(context).account,
-          style: context.appText.header3,
+          style: context.appText.header2,
           textAlign: TextAlign.center,
         ),
         horizontalPadding: 0,
@@ -36,11 +36,15 @@ class AccountScreen extends StatelessWidget {
           child: SizedBox(
             height: Adaptive.getHeight(800),
             child: Padding(
-              padding: EdgeInsets.all(Adaptive.getHeight(8)),
-              child: const Column(
-                children: [
+              padding: EdgeInsets.symmetric(
+                  horizontal: Adaptive.getWidth(15),
+                  vertical: Adaptive.getHeight(20)),
+              child: Column(
+                spacing: Adaptive.getHeight(10),
+                children: const [
                   ProfileLitTile(),
                   AppApearanceListTile(),
+                  Expanded(child: SizedBox()),
                   LogoutListTile(),
                 ],
               ),

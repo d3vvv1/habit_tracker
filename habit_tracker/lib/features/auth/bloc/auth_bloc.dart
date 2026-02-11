@@ -4,12 +4,12 @@ import 'package:habit_tracker/core/services/auth/auth_validator.dart';
 import 'package:habit_tracker/core/services/auth/network_servise.dart';
 import 'package:habit_tracker/features/auth/bloc/auth_event.dart';
 import 'package:habit_tracker/features/auth/bloc/auth_state.dart';
-import 'package:habit_tracker/features/auth/data/basic_user_data.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthService _authService;
   final NetworkService _networkService = NetworkService();
-  BasicUserData? _user;
+  String? _userEmail;
+  String? _password;
 
   AuthBloc({required AuthService authService})
       : _authService = authService,
@@ -27,8 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       bool res = AuthValidator.validateEmail(event.email);
       if (res) {
-        _user = _user?.copyWith(email: event.email) ??
-            BasicUserData(email: event.email, password: '');
+        _userEmail = event.email;
       }
     } catch (e) {
       emit(
@@ -46,8 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       bool res = AuthValidator.validatePassword(event.password);
       if (res) {
-        _user = _user?.copyWith(password: event.password) ??
-            BasicUserData(email: '', password: event.password);
+        _password = event.password;
       }
     } catch (e) {
       emit(
@@ -62,13 +60,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SignIn event,
     Emitter<AuthState> emit,
   ) async {
-    if (_user != null) {
+    if (_userEmail != null) {
       try {
-        bool correctEmail = AuthValidator.validateEmail(_user!.email);
-        bool correctPassword = AuthValidator.validatePassword(_user!.password);
+        bool correctEmail = AuthValidator.validateEmail(_userEmail!);
+        bool correctPassword = AuthValidator.validatePassword(_password!);
         if (correctPassword & correctEmail) {
-          bool res = await _networkService
-              .executeWithRetry(() => _authService.login(_user!));
+          bool res = await _networkService.executeWithRetry(
+              () => _authService.login(_userEmail!, _password!));
           if (res) {
             emit(SuccessLogin());
           }
@@ -87,13 +85,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SignUp event,
     Emitter<AuthState> emit,
   ) async {
-    if (_user != null) {
+    if (_userEmail != null) {
       try {
-        bool correctEmail = AuthValidator.validateEmail(_user!.email);
-        bool correctPassword = AuthValidator.validatePassword(_user!.password);
+        bool correctEmail = AuthValidator.validateEmail(_userEmail!);
+        bool correctPassword = AuthValidator.validatePassword(_password!);
         if (correctPassword & correctEmail) {
-          bool res = await _networkService
-              .executeWithRetry(() => _authService.signUp(_user!));
+          bool res = await _networkService.executeWithRetry(
+              () => _authService.signUp(_userEmail!, _password!));
           if (res) {
             emit(SuccessLogin());
           }

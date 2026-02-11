@@ -72,24 +72,26 @@ class _EmailInputFieldState extends State<EmailInputField> {
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: Adaptive.getWidth(10)),
-                  child: TextFormField(
-                    readOnly: true,
-                    focusNode: _focusNode,
-                    controller: _emailController,
-                    style: context.appText.header4,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.email_outlined,
-                        color: context.appColors.base4,
+                  child: Center(
+                    child: TextFormField(
+                      readOnly: true,
+                      focusNode: _focusNode,
+                      controller: _emailController,
+                      style: context.appText.header4,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.email_outlined,
+                          color: context.appColors.base4,
+                        ),
+                        border: InputBorder.none,
                       ),
-                      border: InputBorder.none,
+                      // validator: _validateEmail,
+                      onFieldSubmitted: (value) =>
+                          context.read<ProfileBloc>().add(
+                                ChangeEmail(newEmail: value),
+                              ),
                     ),
-                    // validator: _validateEmail,
-                    onFieldSubmitted: (value) =>
-                        context.read<ProfileBloc>().add(
-                              ChangeEmail(newEmail: value),
-                            ),
                   ),
                 ),
               ),

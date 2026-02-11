@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_event.dart';
 import 'package:habit_tracker/features/profile/bloc/profile_state.dart';
-import 'package:habit_tracker/features/profile/domain/image_picker_manager.dart';
+import 'package:habit_tracker/core/services/image_picker/image_picker_service.dart';
 import 'package:habit_tracker/features/profile/domain/profile_use_case.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -24,6 +24,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Initialize event,
     Emitter<ProfileState> emit,
   ) async {
+    await _useCase.init();
     emit(Loading());
     bool res = await _useCase.getAvatar();
     log('Avatar load success? - $res');
@@ -42,7 +43,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ChangeAvatar event,
     Emitter<ProfileState> emit,
   ) async {
-    XFile? res = await ImagePickerManager.pickImageFromGallery();
+    XFile? res = await ImagePickerService.pickImageFromGallery();
     if (res != null) {
       var bytes = await res.readAsBytes();
       _useCase.setAvatar(bytes);

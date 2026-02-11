@@ -44,7 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-
 # Firebase build and deployment files
 /firebase-debug.log
 /firebase-debug.*.log
@@ -75,3 +74,6 @@ yarn-error.log*
 /.env.*
 
 ./firebase_options.dart
+
+# FVM Version Cache
+.fvm/

@@ -14,19 +14,27 @@ class AppApearanceListTile extends StatelessWidget {
       horizontalTitleGap: Adaptive.getWidth(20),
       leading: SizedBox(
           height: Adaptive.getHeight(40),
-          child: Icon(
-            Icons.remove_red_eye_outlined,
-            color: context.appColors.base4,
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: Icon(
+              Icons.remove_red_eye_outlined,
+              color: context.appColors.base4,
+            ),
           )),
       title: Text(
         AppWords.of(context).appAppearance,
-        style: context.appText.header4,
+        style: context.appText.header3.copyWith(
+          fontWeight: FontWeight.w800,
+        ),
       ),
       trailing: SizedBox(
         height: Adaptive.getHeight(40),
-        child: Icon(
-          Icons.chevron_right,
-          color: context.appColors.base4,
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Icon(
+            Icons.chevron_right,
+            color: context.appColors.base4,
+          ),
         ),
       ),
       onTap: () => context.pushNamed(AppRouteNames.settings),

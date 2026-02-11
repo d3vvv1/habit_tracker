@@ -16,7 +16,7 @@ class CancelButton extends StatelessWidget {
       ),
       child: SizedBox(
         height: Adaptive.getHeight(60),
-        width: Adaptive.getWidth(180),
+        //width: Adaptive.getWidth(180),
         child: TextButton(
           onPressed: () {
             context.pop();

@@ -71,20 +71,22 @@ class _FullNameInputFieldState extends State<FullNameInputField> {
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: Adaptive.getWidth(10)),
-                  child: TextFormField(
-                    controller: _nameController,
-                    focusNode: _focusNode,
-                    maxLength: 50,
-                    style: context.appText.header4,
-                    keyboardType: TextInputType.name,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      counterText: '',
+                  child: Center(
+                    child: TextFormField(
+                      controller: _nameController,
+                      focusNode: _focusNode,
+                      maxLength: 50,
+                      style: context.appText.header4,
+                      keyboardType: TextInputType.name,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        counterText: '',
+                      ),
+                      // onFieldSubmitted: (value) =>
+                      //     context.read<ProfileBloc>().add(
+                      //           ChangeName(newName: value),
+                      //         ),
                     ),
-                    onFieldSubmitted: (value) =>
-                        context.read<ProfileBloc>().add(
-                              ChangeName(newName: value),
-                            ),
                   ),
                 ),
               ),

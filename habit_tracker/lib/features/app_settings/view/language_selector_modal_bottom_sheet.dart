@@ -34,7 +34,7 @@ class LanguageSelectorModalBottomSheet extends StatelessWidget {
             children: [
               Text(
                 AppWords.of(context).appLanguage,
-                style: context.appText.header3,
+                style: context.appText.header2,
               ),
               const Separator(),
               RadioGroup(
@@ -52,7 +52,7 @@ class LanguageSelectorModalBottomSheet extends StatelessWidget {
                       activeColor: context.appColors.base1,
                       title: Text(
                         label,
-                        style: context.appText.header4,
+                        style: context.appText.header3,
                       ),
                       value: locale,
                     );
@@ -60,11 +60,18 @@ class LanguageSelectorModalBottomSheet extends StatelessWidget {
                 ),
               ),
               const Separator(),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CancelButton(),
-                  OkButton(),
+                  const Expanded(
+                    child: CancelButton(),
+                  ),
+                  SizedBox(
+                    width: Adaptive.getWidth(10),
+                  ),
+                  const Expanded(
+                    child: OkButton(),
+                  ),
                 ],
               )
             ],

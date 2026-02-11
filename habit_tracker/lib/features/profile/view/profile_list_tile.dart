@@ -14,19 +14,27 @@ class ProfileLitTile extends StatelessWidget {
       horizontalTitleGap: Adaptive.getWidth(20),
       leading: SizedBox(
           height: Adaptive.getHeight(40),
-          child: Icon(
-            Icons.person,
-            color: context.appColors.base4,
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: Icon(
+              Icons.person,
+              color: context.appColors.base4,
+            ),
           )),
       title: Text(
         AppWords.of(context).profile,
-        style: context.appText.header4,
+        style: context.appText.header3.copyWith(
+          fontWeight: FontWeight.w800,
+        ),
       ),
       trailing: SizedBox(
         height: Adaptive.getHeight(40),
-        child: Icon(
-          Icons.chevron_right,
-          color: context.appColors.base4,
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Icon(
+            Icons.chevron_right,
+            color: context.appColors.base4,
+          ),
         ),
       ),
       onTap: () => context.pushNamed(AppRouteNames.profile),
