@@ -1,8 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:habit_tracker/features/profile/data/profile_data.dart';
 import 'package:habit_tracker/features/profile/domain/profile_interface.dart';
 
 class ProfileRepository implements ProfileRepositoryInterface {
-  ProfileData? _profileData;
+  late ProfileData _profileData;
+  final FirebaseFirestore _firestore;
+  final FirebaseAuth _auth;
+
+  ProfileRepository({
+    required FirebaseFirestore firestore,
+    required FirebaseAuth auth,
+  })  : _firestore = firestore,
+        _auth = auth;
 
   // @override
   // Future<bool> setBirthday(DateTime date) async {
@@ -62,4 +72,28 @@ class ProfileRepository implements ProfileRepositoryInterface {
 
   @override
   ProfileData get profile => _profileData!;
+
+  @override
+  Future<void> createUserProfile(User user) {
+    // TODO: implement createUserProfile
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<ProfileData> getCurrentProfile() {
+    // TODO: implement getCurrentProfile
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> initLocalData() {
+    // TODO: implement initLocalData
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> updateProfileData(Map<String, dynamic> updates) {
+    // TODO: implement updateProfileData
+    throw UnimplementedError();
+  }
 }
